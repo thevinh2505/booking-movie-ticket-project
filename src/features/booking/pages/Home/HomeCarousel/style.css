@@ -1,0 +1,24 @@
+/* PAGINATION  */
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+	bottom:10px;
+
+}
+.swiper-pagination .swiper-pagination-bullet{
+	background-color: white;
+	width: 6px;
+	height: 6px;
+	opacity: 0.4;
+	box-shadow: inset 0 0 0 5px #ffffff;
+	margin:0 11px!important;
+	vertical-align: middle;
+
+}
+.swiper-pagination .swiper-pagination-bullet-active{
+	background-color: transparent;
+	width: 14px;
+	height: 14px;
+	border: 1px solid red;
+	transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+	opacity: 1;
+	box-shadow: inset 0 0 0 1px red;
+}

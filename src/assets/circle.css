@@ -1,0 +1,6 @@
+.ant-progress-circle .ant-progress-text{
+    color:white
+}
+.ant-progress-inner:not(.ant-progress-circle-gradient) .ant-progress-circle-path{
+    stroke:#7ed321
+}

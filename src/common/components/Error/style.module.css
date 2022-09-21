@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+/*Variables*/
+.leftSection .innerContent {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+}
+
+.background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(#0c0e10, #446182);
+}
+.background .ground {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 25vh;
+	background: #0c0e10;
+}
+@media (max-width: 770px) {
+	.background .ground {
+		height: 0vh;
+	}
+}
+
+.container {
+	position: relative;
+	margin: 0 auto;
+	width: 85%;
+	height: 100vh;
+	padding-top: 5vh;
+	padding-bottom: 20vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+@media (max-width: 770px) {
+	.container {
+		flex-direction: column;
+		padding-bottom: 0vh;
+	}
+}
+
+.leftSection,
+.rightSection {
+	position: relative;
+}
+
+.leftSection {
+	width: 40%;
+}
+@media (max-width: 770px) {
+	.leftSection {
+		width: 100%;
+		height: 40%;
+		position: absolute;
+		top: 0;
+	}
+}
+@media (max-width: 770px) {
+	.leftSection .innerContent {
+		position: relative;
+		padding: 1rem 0;
+	}
+}
+
+.heading {
+	text-align: center;
+	font-size: 9em;
+	line-height: 1.3em;
+	margin: 2rem 0 0.5rem 0;
+	padding: 0;
+	text-shadow: 0 0 1rem #fefefe;
+}
+@media (max-width: 770px) {
+	.heading {
+		font-size: 7em;
+		line-height: 1.15;
+		margin: 0;
+	}
+}
+
+.subheading {
+	text-align: center;
+	max-width: 480px;
+	font-size: 1.5em;
+	line-height: 1.15em;
+	padding: 0 1rem;
+	margin: 0 auto;
+}
+.backToHomeBtn {
+	margin-top: 20px;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 18px;
+	font-family: "Fira Sans", sans-serif;
+	padding: 6px 14px;
+	border-radius: 4px;
+	box-shadow: 0 0 1rem #fefefe;
+	transition: all 1s ease-in-out;
+	border: none;
+}
+.backToHomeBtn:hover {
+	color: white;
+	background-color: #2d3f54;
+	border: none;
+}
+@media (max-width: 770px) {
+	.subheading {
+		font-size: 1.3em;
+		line-height: 1.15;
+		max-width: 100%;
+	}
+}
+
+.rightSection {
+	width: 50%;
+}
+@media (max-width: 770px) {
+	.rightSection {
+		width: 100%;
+		height: 60%;
+		position: absolute;
+		bottom: 0;
+	}
+}
+
+.svgimg {
+	position: absolute;
+	bottom: 0;
+	padding-top: 10vh;
+	padding-left: 1vh;
+	max-width: 100%;
+	max-height: 100%;
+}
+@media (max-width: 770px) {
+	.svgimg {
+		padding: 0;
+	}
+}
+.svgimg .benchLegs {
+	fill: #0c0e10;
+}
+.svgimg .topBench,
+.svgimg .bottomBench {
+	stroke: #0c0e10;
+	stroke-width: 1px;
+	fill: #5b3e2b;
+}
+.svgimg .bottomBench path:nth-child(1) {
+	fill: #432d20;
+}
+.svgimg .lampDetails {
+	fill: #202425;
+}
+.svgimg .lampAccent {
+	fill: #2c3133;
+}
+.svgimg .lampBottom {
+	fill: linear-gradient(#202425, #0c0e10);
+}
+.svgimg .lamp-light {
+	fill: #efefef;
+}
+
+@keyframes glow {
+	0% {
+		text-shadow: 0 0 1rem #fefefe;
+	}
+	50% {
+		text-shadow: 0 0 1.85rem #ededed;
+	}
+	100% {
+		text-shadow: 0 0 1rem #fefefe;
+	}
+}

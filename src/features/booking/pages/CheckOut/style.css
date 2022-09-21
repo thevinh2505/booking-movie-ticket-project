@@ -1,0 +1,214 @@
+.tab-booking-ticket .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap{
+	justify-content: space-around;
+}
+.tab-booking-ticket .ant-tabs-top > .ant-tabs-nav::before{
+	border: none!important;
+}
+.tab-booking-ticket .ant-tabs-ink-bar{
+	background: none;
+
+}
+.tab-booking-ticket .ant-tabs > .ant-tabs-nav {
+	margin-bottom: 0;
+}
+.tab-booking-ticket .ant-tabs-nav-list .ant-tabs-tab {
+	margin: 0 !important;
+	padding: 12px 0 0!important	;
+	margin-right: 24px !important;
+}
+/* PHẦN ĐẶT VÉ CHỌN GHẾ  */
+.screen-wrap {
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+.screen {
+	position: relative;
+	color: #fff;
+
+}
+.screen-1 {
+	position: absolute;
+	width: 440px;
+	left: 20px;
+	pointer-events: none;
+}
+.screen-2 {
+	width: 480px;
+}
+
+
+.seat {
+	background-color: #cce1ff;
+	color: #334c65;
+	border-radius: 2px;
+	text-align: center;
+	margin: 8px 3px;
+	transition: 0.5;
+}
+.seat-position{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    line-height: 12px;
+}
+.normal {
+	background-color: #cce1ff;
+	color: #334c65;
+}
+.seat-vip,
+.vip {
+	background-color: #6356e4;
+	color: #fff;
+}
+.seat-booked,
+.booked {
+	background-color: #66798b;
+	color: #fff;
+}
+.seat-selected,
+.selected {
+	background-color: var(--primary-color);
+	color: #fff;
+}
+button:disabled{
+    cursor: no-drop;
+}
+
+.rotate-180{
+    transform: rotate(180deg);
+}
+.ticket-info-bottom{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.ticket-info-bottom .SELECTED-SEAT-INFO .ant-row{
+    row-gap: 16px;
+    margin: 0 -8px!important;
+}
+.ticket-info-bottom .SELECTED-SEAT-INFO .ant-col{
+    padding: 0 8px!important;
+}
+
+.booking-ticket-hover{
+    transform: translateY(0)!important;
+}
+@media (max-width: 576px) {
+	.screen-1 {
+		position: absolute;
+		width: 300px;
+		left: 15px;
+		pointer-events: none;
+	}
+	.screen-2 {
+		width: 330px;
+	}
+	.seat,
+	.seat-detail {
+		font-size: 8px;
+		height: 16px;
+		width: 19px;
+		margin: 8px 3px;
+	}
+}
+@media (max-width: 400px) {
+	.screen-1 {
+		position: absolute;
+		width: 250px;
+		left: 15px;
+		pointer-events: none;
+	}
+	.screen-2 {
+		width: 280px;
+	}
+	.seat,
+	.seat-detail {
+		font-size: 8px;
+		height: 14px;
+		width: 16px;
+		margin: 8px 3px;
+	}
+}
+
+@media (min-width: 576.2px) {
+	.seat,
+	.seat-detail {
+		font-size: 10px;
+		height: 15px;
+		width: 24px;
+		margin: 8px 5px;
+	}
+
+}
+@media (min-width: 768px) {
+	.seat,
+	.seat-detail {
+		font-size: 12px;
+		height: 18px;
+		width: 28px;
+	}
+    .ticket-info-bottom .SELECTED-SEAT-INFO .ant-row{
+        row-gap: 20px;
+        margin: 0 -10px!important;
+    }
+    .ticket-info-bottom .SELECTED-SEAT-INFO .ant-col{
+        padding: 0 10px!important;
+    }
+}
+@media (min-width: 992px) {
+	.seat,
+	.seat-detail {
+		font-size: 12px;
+		height: 20px;
+		width: 32px;
+	}
+}
+@media (min-width: 1200px) {
+	.seat,
+	.seat-detail {
+		font-size: 12px;
+		height: 20px;
+		width: 32px;
+		margin: 10px 6px;
+	}
+}
+.ticket-divider-notch {
+    height: 20px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    background-color: #212f50;
+	overflow: hidden;
+}
+.ticket-notch {
+    z-index: 1;
+    position: absolute;
+    left: -10px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-right: 1px solid #212f50;
+    background-color: #001325;
+    border-radius: 20px;
+
+	border-left:none
+}
+.ticket-divider {
+    background-image: linear-gradient(90deg,#66798b 10%,hsla(0,0%,100%,0) 0);
+    margin-left: 4px;
+    background-position: top;
+    background-size: 10px 1px;
+    background-repeat: repeat-x;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+}
+.ticket-notch-right {
+    left: auto;
+    right: -10px;
+    top: 0;
+
+}
+

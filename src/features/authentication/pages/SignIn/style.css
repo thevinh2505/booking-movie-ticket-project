@@ -1,0 +1,83 @@
+.bg-login {
+	background-image: url("https://movie-booking-project.vercel.app/img/bgAuth.jpg");
+	background-position: center;
+	background-size: contain;
+}
+.sign-in-container {
+	padding:30px 24px 40px; 
+	width: 400px;
+	background-image: linear-gradient(
+		to bottom,
+		rgba(20, 50, 93, 0.9),
+		rgba(8, 22, 48, 0.9)
+	);
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+	border-radius: 6px;
+	z-index: 1000;
+}
+.sign-in-modal {
+	height: fit-content;
+}
+.inputBox {
+	width: 320px;
+	height: 46px;
+	margin-top: 28px;
+	position: relative;
+}
+
+.sign-in-modal .inputBox > input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	border: 1px solid black;
+	padding: 8px 12px;
+	border-radius: 4px;
+	outline: none;
+	font-size: 14px;
+	font-weight: 500;
+}
+.sign-in-modal .inputBox > span {
+	position: absolute;
+	top: 1px;
+	left: 1px;
+	padding: 8px 12px;
+	display: inline-block;
+	font-size: 14px;
+	color: rgba(8, 22, 48, 0.9);
+	font-weight: 500;
+	transition: 0.5s;
+	pointer-events: none;
+}
+.sign-in-modal .inputBox > input:focus ~ span,.sign-in-modal .inputBox > input:valid ~ span {
+	transform: translateX(-10px) translateY(-32px);
+	font-size: 14px;
+	color: white;
+}
+.sign-in-btn{
+    background-color: rgb(62, 99, 182);
+    border-color: rgb(62, 99, 182);
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+.sign-in-title-text{
+    letter-spacing: -0.6px;
+}
+.inputBoxBtn{
+	margin-bottom: 25px!important;
+}
+/* .errorText{
+
+} */
+@media (max-width: 576px){
+    .sign-in-container{
+        width: 330px;
+		padding:40px 20px 20px;
+    }
+	.inputBox{
+		width: 280px;
+	}
+	.sign-in-title-text{
+		font-size: 22px;
+	}
+}
