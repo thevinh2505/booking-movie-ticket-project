@@ -309,7 +309,6 @@ function Combo(props) {
 	return (
 		<Fragment>
 			<div className="pt-4 pr-4 pl-4 md:pb-12 pb-6">
-				
 				<div className="flex py-3 px-4 items-center bg-background-light rounded-lg ">
 					<img
 						alt="popcorn"
@@ -317,8 +316,8 @@ function Combo(props) {
 						className="w-6 h-6"
 					/>
 					<p className="ml-2">
-						Buying combos will be more economical when buying at the
-						cinema's counter
+						Buying combos will be more economical at the cinema's
+						counter
 					</p>
 				</div>
 				<p className="text-base mt-10">Choose combo:</p>
@@ -492,7 +491,7 @@ function Combo(props) {
 				</div>
 			</div>
 			<div
-				className="bg-secondary-color w-full p-4  flex justify-between items-center md:text-base "
+				className="bg-secondary-color w-full p-4  flex justify-between items-center md:text-base fixed bottom-0 left-0 right-0"
 				style={{ borderTop: "1px solid #334c65" }}
 			>
 				<div className="flex items-center ">
@@ -531,7 +530,7 @@ function BookingResult(props) {
 					</div>
 				</div>
 				<div
-					className="pt-4 px-4 pb-2 flex items-center bg-background-light  mt-4"
+					className="pt-4 px-4 pb-2 flex items-center bg-background-light  mt-4 "
 					style={{
 						border: "1px solid #334c65",
 						borderBottom: "none",
@@ -601,18 +600,20 @@ function BookingResult(props) {
 							className="text-white"
 							style={{ lineHeight: "18px" }}
 						>
-							{items?.items}
+							x {items?.items}
 						</p>
 					</div>
 					<div className="flex justify-between mt-2">
 						<p className="text-sm md:text-base text-text-grey-ticket">
 							Showtimes:
 						</p>
-						<div className="flex">
+						<div className="flex flex-wrap gap-2">
 							<p
-								className="text-xs rounded-lg ml-3 py-1 px-2 text-white"
+								className="text-xs rounded-lg ml-3  px-2 text-white"
 								style={{
 									background: "#334c65",
+									paddingTop: "3px",
+									paddingBottom: "3px",
 									lineHeight: "16px",
 								}}
 							>
@@ -621,9 +622,11 @@ function BookingResult(props) {
 								{props.thongTinPhim?.tenRap}
 							</p>
 							<p
-								className="text-xs rounded-lg ml-3 py-1 px-2 text-white"
+								className="text-xs rounded-lg ml-3  px-2 text-white"
 								style={{
 									background: "#334c65",
+									paddingTop: "3px",
+									paddingBottom: "3px",
 									lineHeight: "16px",
 								}}
 							>
@@ -644,10 +647,13 @@ function BookingResult(props) {
 					</div>
 				</div>
 				<div className="py-3 px-4 flex items-center bg-background-light rounded-lg mt-4">
-					<p className="text-primary-color">If you don't receive your ticket code after 10 minutes of payment, please contact CSKH for assistance.</p>
+					<p className="text-primary-color">
+						If you don't receive your ticket code after 10 minutes
+						of payment, please contact CSKH for assistance.
+					</p>
 				</div>
 			</div>
-			
+
 			<div
 				className="bg-secondary-color w-full p-4  flex justify-between items-center md:text-base fixed bottom-0 left-0 right-0 "
 				style={{ borderTop: "1px solid #334c65" }}

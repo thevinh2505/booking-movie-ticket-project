@@ -2,6 +2,7 @@ import produce from "immer";
 import {
 	SET_BOX_OFFICE_LIST,
 	SET_CINEMA_SYSTEM,
+	SET_CINEMA_SYSTEM_INFO,
 	SET_COST,
 	SET_MOVIE_DETAIL,
 	SET_MOVIE_LIST,
@@ -11,10 +12,11 @@ import {
 const initialState = {
 	movieList: [],
 	cinemaSystem: [],
+	schedule: [],
 	movieDetail: {},
 	boxOfficeList: {},
 	selectedSeats: [],
-	moneyCost:0
+	moneyCost: 0,
 };
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -22,9 +24,13 @@ const reducer = (state = initialState, action) => {
 			return produce(state, (draft) => {
 				draft.movieList = action.payload;
 			});
-		case SET_CINEMA_SYSTEM:
+		case SET_CINEMA_SYSTEM_INFO:
 			return produce(state, (draft) => {
 				draft.cinemaSystem = action.payload;
+			});
+		case SET_CINEMA_SYSTEM:
+			return produce(state, (draft) => {
+				draft.schedule = action.payload;
 			});
 		case SET_MOVIE_DETAIL:
 			return produce(state, (draft) => {
@@ -46,9 +52,9 @@ const reducer = (state = initialState, action) => {
 				}
 			});
 		case SET_COST:
-			return produce(state,draft=>{
-				draft.moneyCost=action.payload
-			})
+			return produce(state, (draft) => {
+				draft.moneyCost = action.payload;
+			});
 		default:
 			return { ...state };
 	}

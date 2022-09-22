@@ -1,0 +1,93 @@
+.details-banner:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: -webkit-linear-gradient(180deg, rgba(0, 18, 50, 0.134891) 0%, #001232 90%);
+}
+.details-banner-wrapper .details-banner-thumb {
+    display: none;
+    border: 1px solid #17305f;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.light-button:hover{
+    box-shadow: 0px 10px 15px 0px rgb(59 55 188 / 50%);
+}
+
+@media (max-width:576px){
+    .detail-banner{
+        height: 400px;
+    }
+    .cinema-logo-detail{
+        max-width: 45px;
+        margin:0 10px;
+    }
+    .logo-row{
+        margin:0 -10px;
+    }
+}
+@media(min-width:576.1px){
+    .detail-banner{
+        height: 424px;
+    }
+    .cinema-logo-detail{
+        max-width: 50px;
+        margin:0 15px;
+    }
+    .logo-row{
+        margin:0 -15px;
+    }
+}
+@media(min-width:768px){
+    .cinema-logo-detail{
+        max-width: 70px;
+        margin:0 20px;
+    }
+    .logo-row{
+        margin:0 -20px;
+    }
+}
+@media (min-width: 992px){
+    
+    .details-banner-wrapper .details-banner-thumb {
+        width: 25%;
+        display: block;
+        height: 300px;
+    }
+    .details-banner-thumb img{
+        height: 300px;
+    }
+    .offset-lg-3{
+        margin-left: 28%;
+    }
+    .cinema-logo-detail{
+        max-width: 90px;
+
+    }
+    .logo-row{
+        margin:0 -25px;
+    }
+}
+@media (min-width:1200px){
+    .details-banner-thumb{
+        height: 370px!important;
+    }
+    .details-banner-thumb img{
+        height: 370px;
+    }
+    .offset-lg-3{
+        margin-left: 25%;
+    }
+    .cinema-logo-detail{
+        margin:0 30px;
+    }
+    .logo-row{
+        margin:0 -30px;
+    }
+}
+.rotate-back{
+    transform: rotate(0)!important;
+}

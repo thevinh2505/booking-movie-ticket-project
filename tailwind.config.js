@@ -17,6 +17,8 @@ module.exports = {
 				"background-light": "var(--background-light)",
 				"border-blue": "var(--border-blue)",
 				"text-grey-ticket": "var(--text-grey-ticket)",
+				"text-light-blue":"var(--text-light-blue)",
+				"text-green-hover":"var(--text-green-hover)"
 			},
 		},
 		screens: {

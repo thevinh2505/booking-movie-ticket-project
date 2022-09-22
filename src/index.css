@@ -3,15 +3,16 @@
 @tailwind utilities;
 
 @import "antd/dist/antd.css";
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"); */
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 }
 body {
-	font-family: "Roboto", sans-serif;
+	/* font-family: "Roboto", sans-serif; */
+	font-family: "Poppins", sans-serif;
 	font-size: 16px;
 	background-color: #001325;
 }
@@ -25,27 +26,30 @@ img {
 	object-fit: cover;
 	object-position: center;
 }
-.mt-10{
-	margin-top: 10px!important;
+.mt-10 {
+	margin-top: 10px !important;
 }
+
 :root,
 #root,
 #docs-root,
 .root {
 	--text-white: #fff;
-	--text-grey: #66798b;
+	--text-grey: #dbe2fb;
 	--text-grey-dark: #9b9b9b;
-	--text-grey-ticket:#ccd2d8;
+	--text-grey-ticket: #ccd2d8;
 	--primary-color: #f9ab00;
 	--primary-light-color: #e4d804;
 	--secondary-color: #001325;
 	--primary-red: #fb4226;
 	--primary-red-dark: #b42a14;
-	--background-light:#212f50;
-	--border-blue:#0068ff;
+	--background-light: #212f50;
+	--border-blue: #0068ff;
+	--text-light-blue: #9aace5;
+	--text-green-hover: #31d7a9;
 }
-.d-block{
-	display: block!important;
+.d-block {
+	display: block !important;
 }
 .ant-row {
 	margin: 0 !important;
@@ -73,4 +77,40 @@ img {
 }
 .mw215 {
 	max-width: 215px !important;
+}
+@media (min-width:320px){
+	.Container{
+		max-width:576px!important;
+		padding-left: 20px;
+		padding-right:20px;
+		margin-right:auto;
+		margin-left:auto;
+	}
+}
+@media (min-width:576px){
+	.Container{
+		max-width:760px!important;
+		padding-left: 20px;
+		padding-right:20px;
+		margin-right:auto;
+		margin-left:auto;
+	}
+}
+@media (min-width:768px){
+	.Container{
+		max-width:760px!important;
+		padding-left: 15px;
+		padding-right:15px;
+		margin-right:auto;
+		margin-left:auto;
+	}
+}
+@media (min-width:1200px){
+	.Container{
+		max-width:1170px!important;
+		padding-left: 15px;
+		padding-right:15px;
+		margin-right:auto;
+		margin-left:auto;
+	}
 }
