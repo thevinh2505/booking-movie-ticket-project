@@ -36,7 +36,7 @@ function App() {
 				<HomeTemplate path="/contact" exact Component={Contact} />
 				<HomeTemplate path="/detail/:id" exact Component={Detail} />
 				<CheckoutTemplate
-					path="/checkout/:id"
+					path="/checkout/:id/:maHeThongRap"
 					exact
 					Component={CheckOut}
 				/>

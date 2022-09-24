@@ -184,8 +184,7 @@ function DetailBanner(props) {
 	);
 }
 function DetailLocation(props) {
-	const showTimeRef=useRef()
-	const chevronRef=useRef()
+	const showTimeRef = useRef();
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const cinemaSystem = useSelector((state) => state.booking.cinemaSystem);
@@ -198,8 +197,8 @@ function DetailLocation(props) {
 	};
 	const checkArr = [];
 	console.log(schedule, "schedule");
-	const goToBooking = (id) => {
-		history.push(`/checkout/${id}`);
+	const goToBooking = (id, maHeThongRap) => {
+		history.push(`/checkout/${id}/${maHeThongRap}`);
 	};
 	// const handleChevronRef=(e)=>{
 	// 	e.preventDefault()
@@ -279,22 +278,22 @@ function DetailLocation(props) {
 								>
 									<div className="cinema-agency flex pb-1 items-center justify-between">
 										<div className="flex items-center">
-										<img
-											style={{ width: "38px" }}
-											src={schedule.logo}
-											alt="logo he thong rap"
-										/>
-										<div className="ml-3">
-											<p className="text-sm  text-text-grey">
-												{cumRap.tenCumRap}
-											</p>
-											<p
-												className="text-sm mt-1"
-												style={{ color: "#99a5b2" }}
-											>
-												{cumRap.diaChi}
-											</p>
-										</div>
+											<img
+												style={{ width: "38px" }}
+												src={schedule.logo}
+												alt="logo he thong rap"
+											/>
+											<div className="ml-3">
+												<p className="text-sm  text-text-grey">
+													{cumRap.tenCumRap}
+												</p>
+												<p
+													className="text-sm mt-1"
+													style={{ color: "#99a5b2" }}
+												>
+													{cumRap.diaChi}
+												</p>
+											</div>
 										</div>
 										{/* <div >
 											<img  ref={chevronRef} className=" cursor-pointer" src="https://movie.zalopay.vn/images/icon-arrow-down.svg" alt="button open"/>
@@ -311,7 +310,8 @@ function DetailLocation(props) {
 														<button
 															onClick={() => {
 																goToBooking(
-																	item.maLichChieu
+																	item.maLichChieu,
+																	schedule?.maHeThongRap
 																);
 															}}
 															className="font-medium lg:text-sm xs:text-xs xs:w-12 lg:w-16 tracking-wider rounded-lg py-1 bg-transparent"

@@ -1,6 +1,6 @@
 import { instance } from "api/instance";
 export const SET_PROFILE="auth/SET_PROFILE";
-
+export const SET_ACCOUNT_INFO="auth/SET_ACCOUNT_INFO"
 // action đăng nhập
 export const signInAction = (user) => {
 	return async (next) => {
@@ -31,3 +31,19 @@ export const signInAction = (user) => {
 	};
 };
 
+// thông tin tài khoản + lịch sử đặt vé
+export const setAccountInfoAction= async (next)=>{
+	try{
+		const res=await instance.request({
+			url:"api/QuanLyNguoiDung/ThongTinTaiKhoan",
+			method:"POST",
+		})
+		console.log(res.data.content)
+		next({
+			type:SET_ACCOUNT_INFO,
+			payload:res.data.content
+		})
+	}catch(err){
+		console.log(err)
+	}
+}
