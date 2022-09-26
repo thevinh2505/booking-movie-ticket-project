@@ -5,7 +5,7 @@ import MovieItem from "../MovieItem";
 
 function MovieList() {
     const movieList=useSelector(state=>state.booking.movieList)
-    console.log(movieList)
+    console.log(movieList,'1')
 	return (
 		<div className="w-full block  mx-auto">
 			<Row className="w-full" gutter={{ xs:40, sm: 40, md:50, lg: 50 ,xl:60}}>

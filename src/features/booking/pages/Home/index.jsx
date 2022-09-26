@@ -4,11 +4,12 @@ import {
 	fetchMovieListAction,
 } from "features/booking/utils/action";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
 import HomeCarousel from "./HomeCarousel";
 // import HomeMenu from "./HomeMenu";
 import MovieList from "./MovieList";
-
+import './PaginationStyle.css'
 function Home() {
 	const dispatch = useDispatch();
 

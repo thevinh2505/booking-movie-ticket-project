@@ -79,5 +79,10 @@
     color: white;
 }
 
+.ReactModal__Overlay--after-open{
+    background-color: rgba(0, 0, 0, 0.7)!important;
+}
     
-
+.ReactModal__Content .ReactModal__Content--after-open{
+    background:  transparent !important;
+}

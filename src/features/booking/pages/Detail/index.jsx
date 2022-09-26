@@ -9,6 +9,7 @@ import {
 	FaInstagram,
 	FaGoogle,
 } from "react-icons/fa";
+import { BsPlayCircleFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import {
 	fetchCinemaScheduleAction,
@@ -19,8 +20,23 @@ import "assets/circle.css";
 import "./style.css";
 import Loading from "common/components/Loading";
 import moment from "moment";
+import Modal from "react-modal";
+import ReactPlayer from "react-player";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { useRef } from "react";
+import { useState } from "react";
+const customStyles = {
+	content: {
+		top: "50%",
+		left: "50%",
+		right: "auto",
+		bottom: "auto",
+		marginRight: "-50%",
+		transform: "translate(-50%, -50%)",
+		padding: 0,
+		border: "none",
+	},
+};
 function Detail(props) {
 	const match = useRouteMatch();
 	const maPhim = +match.params.id;
@@ -51,8 +67,18 @@ function Detail(props) {
 		</div>
 	);
 }
+
 function DetailBanner(props) {
 	const movieDetail = props?.movieDetail;
+	const [modalIsOpen, setIsOpen] = useState(false);
+
+	const openModal = () => {
+		setIsOpen(true);
+	};
+
+	const closeModal = () => {
+		setIsOpen(false);
+	};
 	return (
 		<Fragment>
 			<div
@@ -60,20 +86,29 @@ function DetailBanner(props) {
 				style={{
 					backgroundImage:
 						"url('http://pixner.net/boleto/demo/assets/images/banner/banner03.jpg')",
+					maxHeight: "323px",
 				}}
 			>
-				<div className="Container xs:pt-16 sm:pt-28 lg:pt-40 xl:pt-60">
+				<div className="Container xs:pt-10 sm:pt-16 lg:pt-36">
 					<div className="details-banner-wrapper relative ">
 						<div
 							className="details-banner-thumb absolute top-0 left-0 "
 							style={{ maxWidth: "255px" }}
 						>
-							<img
-								style={{ maxWidth: "255px" }}
-								className="w-full "
-								src={movieDetail.hinhAnh}
-								alt="anh phim"
-							/>
+							<div className="film_item relative">
+								<img
+									style={{ maxWidth: "255px" }}
+									className="w-full "
+									src={movieDetail.hinhAnh}
+									alt="anh phim"
+								/>
+								<div
+									onClick={openModal}
+									className="film_trailer-btn absolute top"
+								>
+									<BsPlayCircleFill className="trailer-btn absolute" />
+								</div>
+							</div>
 						</div>
 						<div className="details-banner-content offset-lg-3">
 							<h3 className="title xs:text-2xl sm:text-3xl  text-white font-semibold mb-2 cursor-default text">
@@ -135,6 +170,7 @@ function DetailBanner(props) {
 					backgroundColor: "#001932",
 					borderTop: "1px solid #17305f",
 					borderBottom: "1px solid #17305f",
+					minHeight: "185px",
 				}}
 			>
 				<div className="Container block ">
@@ -146,7 +182,7 @@ function DetailBanner(props) {
 							Movie content:
 						</h4>
 						<p
-							className=" xl:w-3/4 w-full xs:text-sm sm:text-base tracking-wider font-normal "
+							className=" xl:w-3/4 w-full xs:text-sm sm:text-base tracking-wide  font-normal "
 							style={{ color: "#dbe2fb", lineHeight: "1.4" }}
 						>
 							{movieDetail.moTa}
@@ -238,7 +274,7 @@ function DetailLocation(props) {
 						style={{ borderBottom: " 1px solid #212f50" }}
 					>
 						<h2
-							className="text-white xs:text-lg sm:text-xl"
+							className="text-white xs:text-lg sm:text-xl capitalize"
 							style={{ color: "#dbe2fb" }}
 						>
 							{schedule.tenHeThongRap}
@@ -284,7 +320,7 @@ function DetailLocation(props) {
 												alt="logo he thong rap"
 											/>
 											<div className="ml-3">
-												<p className="text-sm  text-text-grey">
+												<p className="text-sm  text-text-grey capitalize">
 													{cumRap.tenCumRap}
 												</p>
 												<p

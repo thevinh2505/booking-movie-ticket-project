@@ -13,33 +13,47 @@ import { useRouteMatch } from "react-router-dom";
 import styles from "./style.module.css";
 import "./style.css";
 import _ from "lodash";
-
+import { HiOutlineChevronRight } from "react-icons/hi";
 import { Tabs } from "antd";
 import { useRef } from "react";
+import { LoadingOutlined } from "@ant-design/icons";
 const { TabPane } = Tabs;
 export default function BookingTab(props) {
 	const match = useRouteMatch();
 	const MaPhim = match.params.id;
-	const maHeThongRap=match.params.maHeThongRap
+	const maHeThongRap = match.params.maHeThongRap;
 	const dispatch = useDispatch();
 	const boxOfficeList = useSelector((state) => state.booking.boxOfficeList);
 	const selectedSeats = useSelector((state) => state.booking.selectedSeats);
 
+	const [activeTabKey, setActiveTabKey] = useState("1");
 	useEffect(() => {
 		dispatch(fetchBoxOfficeListAction(MaPhim));
-		dispatch(fetchCinemaScheduleAction(maHeThongRap))
+		dispatch(fetchCinemaScheduleAction(maHeThongRap));
 	}, []);
 	if (boxOfficeList === {}) {
 		return;
 	}
-
+	const changeTab = (activeKey) => {
+		setActiveTabKey(activeKey);
+	};
 	const { thongTinPhim, danhSachGhe } = boxOfficeList;
 	return (
 		<div className="tab-booking-ticket">
-			<Tabs defaultActiveKey="1">
+			<Tabs
+				className="mt-4 "
+				defaultActiveKey="1"
+				activeKey={activeTabKey}
+				onChange={changeTab}
+			>
 				<TabPane
 					className="text-white"
-					tab={<p className="text-white">BOOKING</p>}
+					tab={
+						<p className="text-white xs:text-xs sm:text-sm">
+							1. Pick Seat{" "}
+							<HiOutlineChevronRight className="inline-block" />
+						</p>
+					}
 					key="1"
 				>
 					<CheckOut
@@ -50,11 +64,18 @@ export default function BookingTab(props) {
 						boxOfficeList={boxOfficeList}
 						thongTinPhim={thongTinPhim}
 						danhSachGhe={danhSachGhe}
+						activeTabKey={activeTabKey}
+						setActiveTabKey={setActiveTabKey}
 					/>
 				</TabPane>
 				<TabPane
 					className="text-white"
-					tab={<p className="text-white">PURCHASE COMBO</p>}
+					tab={
+						<p className="text-white ml-1 xs:text-xs sm:text-sm">
+							2. Pick Combo{" "}
+							<HiOutlineChevronRight className="inline-block" />
+						</p>
+					}
 					key="2"
 				>
 					<Combo
@@ -62,14 +83,18 @@ export default function BookingTab(props) {
 						dispatch={dispatch}
 						selectedSeats={selectedSeats}
 						boxOfficeList={boxOfficeList}
-				
+						setActiveTabKey={setActiveTabKey}
 						thongTinPhim={thongTinPhim}
 						danhSachGhe={danhSachGhe}
 					/>
 				</TabPane>
 				<TabPane
 					className="text-white"
-					tab={<p className="text-white">RESULT</p>}
+					tab={
+						<p className="text-white xs:text-xs sm:text-sm">
+							3. Result
+						</p>
+					}
 					key="3"
 				>
 					<BookingResult
@@ -86,6 +111,9 @@ export default function BookingTab(props) {
 	);
 }
 function CheckOut(props) {
+	const otherSelectedSeats = useSelector(
+		(state) => state.booking.otherSelectedSeats
+	);
 	const arrowDownRef = useRef();
 	const bookingInfoWrapperRef = useRef();
 	const handleBookingTicket = () => {
@@ -94,7 +122,8 @@ function CheckOut(props) {
 			danhSachVe: props.selectedSeats,
 		};
 		console.log(thongTinDatVe);
-		props.dispatch(fetchBookingTicketAction(thongTinDatVe));
+		// props.dispatch(fetchBookingTicketAction(thongTinDatVe));
+		props.setActiveTabKey("2");
 	};
 	const handleArrowDown = () => {
 		arrowDownRef.current.classList.toggle("rotate-180");
@@ -105,11 +134,20 @@ function CheckOut(props) {
 			let classSeatVip = seat.loaiGhe === "Vip" ? "seat-vip" : "";
 			let classBookedSeat = seat.daDat ? "seat-booked" : "";
 			let classSelectedSeat = "";
+			let classOtherSelectedSeats = "";
 			let indexSelectedSeat = props.selectedSeats.findIndex(
 				(gheDD) => gheDD.maGhe === seat.maGhe
 			);
 			if (indexSelectedSeat !== -1) {
 				classSelectedSeat = "seat-selected";
+			}
+			// kiểm tra xem danh sách ghế đang đặt có người khác đang đặt ko
+			let indexOtherSelectedSeats = otherSelectedSeats?.findIndex(
+				(item) => item.maGhe === seat.maGhe
+			);
+			// nếu có ngkhac đang đặt -> đổi classOtherSelectedSeats
+			if (indexOtherSelectedSeats !== -1) {
+				classOtherSelectedSeats = "other-selected";
 			}
 			return (
 				<Fragment>
@@ -120,12 +158,16 @@ function CheckOut(props) {
 								payload: seat,
 							});
 						}}
-						disabled={seat.daDat}
+						disabled={seat.daDat || classOtherSelectedSeats !== ""}
 						key={seat.maGhe}
-						className={`relative seat ${classSeatVip} ${classBookedSeat} ${classSelectedSeat}`}
+						className={`relative seat ${classSeatVip} ${classBookedSeat} ${classSelectedSeat} ${classOtherSelectedSeats}`}
 					>
 						<p className="font-medium seat-position absolute">
-							{seat.stt}
+							{classOtherSelectedSeats !== "" ? (
+								<LoadingOutlined />
+							) : (
+								seat.stt
+							)}
 						</p>
 					</button>
 					{(index + 1) % 16 === 0 ? <br /> : ""}
@@ -138,12 +180,12 @@ function CheckOut(props) {
 			<Row className="">
 				<Col lg={18} sm={24} xs={24} className={styles.bookingSection}>
 					<div>
-						<div className="screen-wrap">
+						<div className="screen-wrap mt-2">
 							<div
 								className={`screen text-center ${styles.bookingSection}`}
 							>
 								<p
-									className="text-white  my-2 text-base"
+									className="text-white  mb-2 mt-4 text-base"
 									style={{
 										letterSpacing: "5px",
 										fontWeight: 600,
@@ -192,6 +234,12 @@ function CheckOut(props) {
 							<div className="seat-detail booked"></div>
 							<div className="seat-type-name md:text-base ml-1 sm:text-sm text-xs text-white">
 								Booked Seat
+							</div>
+						</div>
+						<div className="seat-type flex mt-4 items-center w-1/8 ">
+							<div className="seat-detail other-selected"></div>
+							<div className="seat-type-name md:text-base ml-1 sm:text-sm text-xs text-white">
+								Other Selecting
 							</div>
 						</div>
 					</div>
@@ -308,7 +356,6 @@ function Combo(props) {
 			type: SET_COST,
 			payload: { comboMoney, items },
 		});
-	
 	}, [harmony1, harmony2, adam1, adam2, comboMoney]);
 
 	const handleImage = () => {
@@ -745,7 +792,7 @@ function Combo(props) {
 						</div>
 					</div>
 				);
-			case 'BHDStar':
+			case "BHDStar":
 				comboMoney =
 					harmony1 * 144000 +
 					harmony2 * 144000 +
@@ -1409,210 +1456,213 @@ function Combo(props) {
 					harmony2 * 55000 +
 					adam1 * 55000 +
 					adam2 * 107000;
-				return(
+				return (
 					<div className="flex w-full">
-					<div className="lg:w-1/3 xl:w-2/5  w-full">
-						<div className=" py-3 px-4 mt-10 flex items-center bg-background-light rounded-lg ">
-							<img
-								className="w-20 h-20 rounded-lg"
-								src="https://cms.megagscinemas.vn//media/76090/bap-caramel.png"
-								alt="popcorn "
-							/>
-							<div className="ml-4">
-								<p className="text-text-grey">
-								iCaramel Popcorn 44oz
-								</p>
-								<p className="mt-2 font-medium text-base">
-									55.000đ
-								</p>
-								<div className="flex mt-2">
-									<button
-										onClick={() => {
-											if (harmony1 === 0) {
-												return;
-											}
-											setHarmony1(harmony1 - 1);
-										}}
-									>
-										<img
-											src="https://movie.zalopay.vn/images/icon-remove-inactive.svg"
-											alt="-"
-										/>
-									</button>
-									<p
-										className="text-center mx-2 w-7 font-bold text-base"
-										style={{ lineHeight: "24px" }}
-									>
-										{harmony1}
+						<div className="lg:w-1/3 xl:w-2/5  w-full">
+							<div className=" py-3 px-4 mt-10 flex items-center bg-background-light rounded-lg ">
+								<img
+									className="w-20 h-20 rounded-lg"
+									src="https://cms.megagscinemas.vn//media/76090/bap-caramel.png"
+									alt="popcorn "
+								/>
+								<div className="ml-4">
+									<p className="text-text-grey">
+										iCaramel Popcorn 44oz
 									</p>
-									<button
-										onClick={() => {
-											setHarmony1(harmony1 + 1);
-										}}
-									>
-										<img
-											src="https://movie.zalopay.vn/images/icon-add-active.svg"
-											alt="+"
-										/>
-									</button>
+									<p className="mt-2 font-medium text-base">
+										55.000đ
+									</p>
+									<div className="flex mt-2">
+										<button
+											onClick={() => {
+												if (harmony1 === 0) {
+													return;
+												}
+												setHarmony1(harmony1 - 1);
+											}}
+										>
+											<img
+												src="https://movie.zalopay.vn/images/icon-remove-inactive.svg"
+												alt="-"
+											/>
+										</button>
+										<p
+											className="text-center mx-2 w-7 font-bold text-base"
+											style={{ lineHeight: "24px" }}
+										>
+											{harmony1}
+										</p>
+										<button
+											onClick={() => {
+												setHarmony1(harmony1 + 1);
+											}}
+										>
+											<img
+												src="https://movie.zalopay.vn/images/icon-add-active.svg"
+												alt="+"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className=" py-3 px-4 mt-10 flex items-center bg-background-light rounded-lg ">
+								<img
+									className="w-20 h-20 rounded-lg"
+									src="https://cms.megagscinemas.vn//media/76072/bap-pho-mai.png"
+									alt="popcorn "
+								/>
+								<div className="ml-4">
+									<p className="text-text-grey">
+										iCheese Popcorn 44oz
+									</p>
+									<p className="mt-2 font-medium text-base">
+										55.000đ
+									</p>
+									<div className="flex mt-2">
+										<button
+											onClick={() => {
+												if (harmony2 === 0) {
+													return;
+												}
+												setHarmony2(harmony2 - 1);
+											}}
+										>
+											<img
+												src="https://movie.zalopay.vn/images/icon-remove-inactive.svg"
+												alt="-"
+											/>
+										</button>
+										<p
+											className="text-center mx-2 w-7 font-bold text-base"
+											style={{ lineHeight: "24px" }}
+										>
+											{harmony2}
+										</p>
+										<button
+											onClick={() => {
+												setHarmony2(harmony2 + 1);
+											}}
+										>
+											<img
+												src="https://movie.zalopay.vn/images/icon-add-active.svg"
+												alt="+"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className=" py-3 px-4 mt-10 flex items-center bg-background-light rounded-lg ">
+								<img
+									className="w-20 h-20 rounded-lg"
+									src="https://cms.megagscinemas.vn//media/76070/share.png"
+									alt="popcorn "
+								/>
+								<div className="ml-4">
+									<p className="text-text-grey">
+										iSHARE Combo
+									</p>
+									<p className="mt-2 font-medium text-base">
+										97.000đ
+									</p>
+									<div className="flex mt-2">
+										<button
+											onClick={() => {
+												if (adam1 === 0) {
+													return;
+												}
+												setAdam1(adam1 - 1);
+											}}
+										>
+											<img
+												src="https://movie.zalopay.vn/images/icon-remove-inactive.svg"
+												alt="-"
+											/>
+										</button>
+										<p
+											className="text-center mx-2 w-7 font-bold text-base"
+											style={{ lineHeight: "24px" }}
+										>
+											{adam1}
+										</p>
+										<button
+											onClick={() => {
+												setAdam1(adam1 + 1);
+											}}
+										>
+											<img
+												src="https://movie.zalopay.vn/images/icon-add-active.svg"
+												alt="+"
+											/>
+										</button>
+									</div>
+								</div>
+							</div>
+							<div className=" py-3 px-4 mt-10 flex items-center bg-background-light rounded-lg ">
+								<img
+									className="w-20 h-20 rounded-lg"
+									src="https://cms.megagscinemas.vn//media/76071/big-share.png"
+									alt="popcorn "
+								/>
+								<div className="ml-4">
+									<p className="text-text-grey">
+										iBIG SHARE Combo
+									</p>
+									<p className="mt-2 font-medium text-base">
+										107.000đ
+									</p>
+									<div className="flex mt-2">
+										<button
+											onClick={() => {
+												if (adam2 === 0) {
+													return;
+												}
+												setAdam2(adam2 - 1);
+											}}
+										>
+											<img
+												src="https://movie.zalopay.vn/images/icon-remove-inactive.svg"
+												alt="-"
+											/>
+										</button>
+										<p
+											className="text-center mx-2 w-7 font-bold text-base"
+											style={{ lineHeight: "24px" }}
+										>
+											{adam2}
+										</p>
+										<button
+											onClick={() => {
+												setAdam2(adam2 + 1);
+											}}
+										>
+											<img
+												src="https://movie.zalopay.vn/images/icon-add-active.svg"
+												alt="+"
+											/>
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div className=" py-3 px-4 mt-10 flex items-center bg-background-light rounded-lg ">
+						<div
+							className="hidden lg:block lg:w-2/3 xl:w-3/5 ml-8 rounded-lg overflow-hidden "
+							// style={{ maxWidth: "350px" }}
+						>
 							<img
-								className="w-20 h-20 rounded-lg"
-								src="https://cms.megagscinemas.vn//media/76072/bap-pho-mai.png"
-								alt="popcorn "
+								className=" mt-3 w-full rounded-lg block "
+								style={{ height: "470px" }}
+								src="https://cms.megagscinemas.vn//media/76831/new-monday-a-fun-day-1998-1080-px.png?width=741&height=400"
+								alt=""
 							/>
-							<div className="ml-4">
-								<p className="text-text-grey">
-								iCheese Popcorn 44oz
-								</p>
-								<p className="mt-2 font-medium text-base">
-									55.000đ
-								</p>
-								<div className="flex mt-2">
-									<button
-										onClick={() => {
-											if (harmony2 === 0) {
-												return;
-											}
-											setHarmony2(harmony2 - 1);
-										}}
-									>
-										<img
-											src="https://movie.zalopay.vn/images/icon-remove-inactive.svg"
-											alt="-"
-										/>
-									</button>
-									<p
-										className="text-center mx-2 w-7 font-bold text-base"
-										style={{ lineHeight: "24px" }}
-									>
-										{harmony2}
-									</p>
-									<button
-										onClick={() => {
-											setHarmony2(harmony2 + 1);
-										}}
-									>
-										<img
-											src="https://movie.zalopay.vn/images/icon-add-active.svg"
-											alt="+"
-										/>
-									</button>
-								</div>
-							</div>
-						</div>
-						<div className=" py-3 px-4 mt-10 flex items-center bg-background-light rounded-lg ">
-							<img
-								className="w-20 h-20 rounded-lg"
-								src="https://cms.megagscinemas.vn//media/76070/share.png"
-								alt="popcorn "
-							/>
-							<div className="ml-4">
-								<p className="text-text-grey">
-								iSHARE Combo
-								</p>
-								<p className="mt-2 font-medium text-base">
-									97.000đ
-								</p>
-								<div className="flex mt-2">
-									<button
-										onClick={() => {
-											if (adam1 === 0) {
-												return;
-											}
-											setAdam1(adam1 - 1);
-										}}
-									>
-										<img
-											src="https://movie.zalopay.vn/images/icon-remove-inactive.svg"
-											alt="-"
-										/>
-									</button>
-									<p
-										className="text-center mx-2 w-7 font-bold text-base"
-										style={{ lineHeight: "24px" }}
-									>
-										{adam1}
-									</p>
-									<button
-										onClick={() => {
-											setAdam1(adam1 + 1);
-										}}
-									>
-										<img
-											src="https://movie.zalopay.vn/images/icon-add-active.svg"
-											alt="+"
-										/>
-									</button>
-								</div>
-							</div>
-						</div>
-						<div className=" py-3 px-4 mt-10 flex items-center bg-background-light rounded-lg ">
-							<img
-								className="w-20 h-20 rounded-lg"
-								src="https://cms.megagscinemas.vn//media/76071/big-share.png"
-								alt="popcorn "
-							/>
-							<div className="ml-4">
-								<p className="text-text-grey">
-								iBIG SHARE Combo
-								</p>
-								<p className="mt-2 font-medium text-base">
-									107.000đ
-								</p>
-								<div className="flex mt-2">
-									<button
-										onClick={() => {
-											if (adam2 === 0) {
-												return;
-											}
-											setAdam2(adam2 - 1);
-										}}
-									>
-										<img
-											src="https://movie.zalopay.vn/images/icon-remove-inactive.svg"
-											alt="-"
-										/>
-									</button>
-									<p
-										className="text-center mx-2 w-7 font-bold text-base"
-										style={{ lineHeight: "24px" }}
-									>
-										{adam2}
-									</p>
-									<button
-										onClick={() => {
-											setAdam2(adam2 + 1);
-										}}
-									>
-										<img
-											src="https://movie.zalopay.vn/images/icon-add-active.svg"
-											alt="+"
-										/>
-									</button>
-								</div>
-							</div>
 						</div>
 					</div>
-					<div
-						className="hidden lg:block lg:w-2/3 xl:w-3/5 ml-8 rounded-lg overflow-hidden "
-						// style={{ maxWidth: "350px" }}
-					>
-						<img
-							className=" mt-3 w-full rounded-lg block "
-							style={{ height: "470px"}}
-							src="https://cms.megagscinemas.vn//media/76831/new-monday-a-fun-day-1998-1080-px.png?width=741&height=400"
-							alt=""
-						/>
-					</div>
-				</div>
-				)
+				);
 			default:
 				return;
 		}
+	};
+	const handleNextStep = () => {
+		props.setActiveTabKey("3");
 	};
 	return (
 		<Fragment>
@@ -1642,7 +1692,10 @@ function Combo(props) {
 					/>
 					<p className="ml-2">{comboMoney}đ</p>
 				</div>
-				<button className="bg-border-blue py-2 px-5 text-sm duration-500 hover:bg-blue-900 rounded-3xl">
+				<button
+					onClick={handleNextStep}
+					className="bg-border-blue py-2 px-5 text-sm duration-500 hover:bg-blue-900 rounded-3xl"
+				>
 					NEXT STEP
 				</button>
 			</div>
@@ -1652,9 +1705,17 @@ function Combo(props) {
 
 function BookingResult(props) {
 	const items = useSelector((state) => state.booking.moneyCost);
-	const tienVe=props.selectedSeats?.reduce((accumulator, item) => {
+	const tienVe = props.selectedSeats?.reduce((accumulator, item) => {
 		return (accumulator += item.giaVe);
-	}, 0)
+	}, 0);
+	const handlePayment = () => {
+		const thongTinDatVe = {
+			maLichChieu: +props.MaPhim,
+			danhSachVe: props.selectedSeats,
+		};
+		console.log(thongTinDatVe);
+		props.dispatch(fetchBookingTicketAction(thongTinDatVe));
+	};
 	return (
 		<Fragment>
 			<div className="pt-4 px-4 w-full">
@@ -1807,9 +1868,12 @@ function BookingResult(props) {
 						src="https://movie.zalopay.vn/images/icon-bill.svg"
 						alt="bill"
 					/>
-					<p className="ml-2">{items?.comboMoney +tienVe}đ</p>
+					<p className="ml-2">{items?.comboMoney + tienVe}đ</p>
 				</div>
-				<button className="bg-border-blue py-2 px-5 text-sm duration-500 hover:bg-blue-900 rounded-3xl">
+				<button
+					onClick={handlePayment}
+					className="bg-border-blue py-2 px-5 text-sm duration-500 hover:bg-blue-900 rounded-3xl"
+				>
 					PAYMENT
 				</button>
 			</div>

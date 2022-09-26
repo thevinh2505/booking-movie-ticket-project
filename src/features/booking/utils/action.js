@@ -1,4 +1,5 @@
 import { instance } from "api/instance";
+import { DISPLAY_LOADING, HIDE_LOADING } from "common/utils/LoadingAction";
 
 export const SET_MOVIE_LIST = "booking/SET_MOVIE_LIST";
 export const SET_CINEMA_SYSTEM = "booking/SET_CINEMA_SYSTEM";
@@ -11,6 +12,9 @@ export const SET_COST = "booking/SET_COST";
 export const fetchMovieListAction = (config, getTotalCount) => {
 	return async (next) => {
 		try {
+			// next({
+			// 	type:DISPLAY_LOADING,
+			// })
 			const res = await instance.request({
 				url: "api/QuanLyPhim/LayDanhSachPhimPhanTrang",
 				method: "GET",
@@ -20,12 +24,14 @@ export const fetchMovieListAction = (config, getTotalCount) => {
 					soPhanTuTrenTrang: config.pageSize,
 				},
 			});
-			console.log(res.data.content);
 			getTotalCount(res.data.content.totalCount);
 			next({
 				type: SET_MOVIE_LIST,
 				payload: res.data.content.items,
 			});
+			// next({
+			// 	type:HIDE_LOADING,
+			// })
 		} catch (err) {
 			console.log(err);
 		}
@@ -54,6 +60,9 @@ export const fetchscheduleAction = async (next) => {
 export const fetchCinemaScheduleAction = (maHeThongRap) => {
 	return async (next) => {
 		try {
+			// next({
+			// 	type:DISPLAY_LOADING,
+			// })
 			const res = await instance.request({
 				url: "api/QuanLyRap/LayThongTinLichChieuHeThongRap",
 				method: "GET",
@@ -62,13 +71,18 @@ export const fetchCinemaScheduleAction = (maHeThongRap) => {
 					maHeThongRap,
 				},
 			});
-			console.log(res.data.content);
 			next({
 				type: SET_CINEMA_SYSTEM,
 				payload: res.data.content[0],
 			});
+			// next({
+			// 	type:HIDE_LOADING,
+			// })
 		} catch (err) {
 			console.log(err);
+			// next({
+			// 	type:HIDE_LOADING,
+			// })
 		}
 	};
 };
@@ -106,7 +120,7 @@ export const fetchBoxOfficeListAction = (id) => {
 				},
 			});
 			console.log(res.data.content);
-			next({
+			await next({
 				type: SET_BOX_OFFICE_LIST,
 				payload: res.data.content,
 			});
@@ -120,14 +134,23 @@ export const fetchBoxOfficeListAction = (id) => {
 export const fetchBookingTicketAction = (thongTinDatVe) => {
 	return async (next) => {
 		try {
+			// next({
+			// 	type:DISPLAY_LOADING,
+			// })
 			const res = await instance.request({
 				url: "api/QuanLyDatVe/DatVe",
 				method: "POST",
 				data: thongTinDatVe,
 			});
 			console.log(res.data.content);
+			// next({
+			// 	type:HIDE_LOADING,
+			// })
 		} catch (err) {
 			console.log(err);
+			// next({
+			// 	type:HIDE_LOADING,
+			// })
 		}
 	};
 };
