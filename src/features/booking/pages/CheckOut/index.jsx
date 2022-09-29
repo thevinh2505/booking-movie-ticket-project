@@ -16,7 +16,8 @@ import _ from "lodash";
 import { HiOutlineChevronRight } from "react-icons/hi";
 import { Tabs } from "antd";
 import { useRef } from "react";
-import { LoadingOutlined } from "@ant-design/icons";
+// import { LoadingOutlined } from "@ant-design/icons";
+// import { connection } from "index";
 const { TabPane } = Tabs;
 export default function BookingTab(props) {
 	const match = useRouteMatch();
@@ -30,6 +31,11 @@ export default function BookingTab(props) {
 	useEffect(() => {
 		dispatch(fetchBoxOfficeListAction(MaPhim));
 		dispatch(fetchCinemaScheduleAction(maHeThongRap));
+
+		//Load danh sách ghế đang đặt từ server về
+		// connection.on("loadDanhSachGheDaDat", (dsGheDangDatReturn) => {
+		// 	return console.log(dsGheDangDatReturn,'hello');
+		// });
 	}, []);
 	if (boxOfficeList === {}) {
 		return;
@@ -111,9 +117,9 @@ export default function BookingTab(props) {
 	);
 }
 function CheckOut(props) {
-	const otherSelectedSeats = useSelector(
-		(state) => state.booking.otherSelectedSeats
-	);
+	// const otherSelectedSeats = useSelector(
+	// 	(state) => state.booking.otherSelectedSeats
+	// );
 	const arrowDownRef = useRef();
 	const bookingInfoWrapperRef = useRef();
 	const handleBookingTicket = () => {
@@ -134,7 +140,7 @@ function CheckOut(props) {
 			let classSeatVip = seat.loaiGhe === "Vip" ? "seat-vip" : "";
 			let classBookedSeat = seat.daDat ? "seat-booked" : "";
 			let classSelectedSeat = "";
-			let classOtherSelectedSeats = "";
+			// let classOtherSelectedSeats = "";
 			let indexSelectedSeat = props.selectedSeats.findIndex(
 				(gheDD) => gheDD.maGhe === seat.maGhe
 			);
@@ -142,13 +148,13 @@ function CheckOut(props) {
 				classSelectedSeat = "seat-selected";
 			}
 			// kiểm tra xem danh sách ghế đang đặt có người khác đang đặt ko
-			let indexOtherSelectedSeats = otherSelectedSeats?.findIndex(
-				(item) => item.maGhe === seat.maGhe
-			);
+			// let indexOtherSelectedSeats = otherSelectedSeats?.findIndex(
+			// 	(item) => item.maGhe === seat.maGhe
+			// );
 			// nếu có ngkhac đang đặt -> đổi classOtherSelectedSeats
-			if (indexOtherSelectedSeats !== -1) {
-				classOtherSelectedSeats = "other-selected";
-			}
+			// if (indexOtherSelectedSeats !== -1) {
+			// 	classOtherSelectedSeats = "other-selected";
+			// }
 			return (
 				<Fragment>
 					<button
@@ -158,16 +164,13 @@ function CheckOut(props) {
 								payload: seat,
 							});
 						}}
-						disabled={seat.daDat || classOtherSelectedSeats !== ""}
+						disabled={seat.daDat}
 						key={seat.maGhe}
-						className={`relative seat ${classSeatVip} ${classBookedSeat} ${classSelectedSeat} ${classOtherSelectedSeats}`}
+						className={`relative seat ${classSeatVip} ${classBookedSeat} ${classSelectedSeat} `}
 					>
 						<p className="font-medium seat-position absolute">
-							{classOtherSelectedSeats !== "" ? (
-								<LoadingOutlined />
-							) : (
-								seat.stt
-							)}
+							
+								{seat.stt}
 						</p>
 					</button>
 					{(index + 1) % 16 === 0 ? <br /> : ""}
@@ -236,12 +239,12 @@ function CheckOut(props) {
 								Booked Seat
 							</div>
 						</div>
-						<div className="seat-type flex mt-4 items-center w-1/8 ">
+						{/* <div className="seat-type flex mt-4 items-center w-1/8 ">
 							<div className="seat-detail other-selected"></div>
 							<div className="seat-type-name md:text-base ml-1 sm:text-sm text-xs text-white">
 								Other Selecting
 							</div>
-						</div>
+						</div> */}
 					</div>
 				</Col>
 			</Row>

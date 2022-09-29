@@ -38,9 +38,9 @@ img {
 	--text-grey: #dbe2fb;
 	--text-grey-dark: #9b9b9b;
 	--text-grey-ticket: #ccd2d8;
-	--primary-color: #f9ab00;
-	--primary-light-color: #e4d804;
-	--secondary-color: #001325;
+	--primary-color-user: #f9ab00;
+	--primary-light-color-user: #e4d804;
+	--secondary-color-user: #001325;
 	--primary-red: #fb4226;
 	--primary-red-dark: #b42a14;
 	--background-light: #212f50;

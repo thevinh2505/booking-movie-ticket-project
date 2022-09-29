@@ -7,9 +7,9 @@ module.exports = {
 		extend: {
 			colors: {
 				"text-white": "var(--text-white)",
-				"primary-color": "var(--primary-color)",
-				"primary-light-color": "var(--primary-light-color)",
-				"secondary-color": "var(--secondary-color)",
+				"primary-color": "var(--primary-color-user)",
+				"primary-light-color": "var(--primary-light-color-user)",
+				"secondary-color": "var(--secondary-color-user)",
 				"text-grey": "var(--text-grey)",
 				"text-grey-dark": "var(--text-grey-dark)",
 				"primary-red": "var(--primary-red)",

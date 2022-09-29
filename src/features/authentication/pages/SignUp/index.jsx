@@ -93,10 +93,9 @@ function SignUp() {
 								type="text"
 							/>
 							<span>Account</span>
-              
 						</div>
-            {formik.touched.taiKhoan && formik.errors.taiKhoan && (
-							<p className='text-red-600 ml-1 italic '>
+						{formik.touched.taiKhoan && formik.errors.taiKhoan && (
+							<p className="text-red-600 ml-1 italic ">
 								{formik.errors.taiKhoan}
 							</p>
 						)}
@@ -109,10 +108,9 @@ function SignUp() {
 								type="password"
 							/>
 							<span>Password</span>
-              
 						</div>
-            {formik.touched.matKhau && formik.errors.matKhau && (
-							<p className='text-red-600 ml-1 italic '>
+						{formik.touched.matKhau && formik.errors.matKhau && (
+							<p className="text-red-600 ml-1 italic ">
 								{formik.errors.matKhau}
 							</p>
 						)}
@@ -126,8 +124,8 @@ function SignUp() {
 							/>
 							<span>Full name</span>
 						</div>
-            {formik.touched.hoTen && formik.errors.hoTen && (
-							<p className='text-red-600 ml-1 italic '>
+						{formik.touched.hoTen && formik.errors.hoTen && (
+							<p className="text-red-600 ml-1 italic ">
 								{formik.errors.hoTen}
 							</p>
 						)}
@@ -140,11 +138,11 @@ function SignUp() {
 								type="text"
 							/>
 							<span>Email</span>
-              {formik.touched.email && formik.errors.email && (
-							<p className='text-red-600 ml-1 italic '>
-								{formik.errors.email}
-							</p>
-						)}
+							{formik.touched.email && formik.errors.email && (
+								<p className="text-red-600 ml-1 italic ">
+									{formik.errors.email}
+								</p>
+							)}
 						</div>
 						<div className="inputBox  mx-auto">
 							<input
@@ -155,10 +153,9 @@ function SignUp() {
 								type="text"
 							/>
 							<span>Phone number</span>
-              
 						</div>
-            {formik.touched.soDt && formik.errors.soDt && (
-							<p className='text-red-600 ml-1 italic '>
+						{formik.touched.soDt && formik.errors.soDt && (
+							<p className="text-red-600 ml-1 italic ">
 								{formik.errors.soDt}
 							</p>
 						)}
@@ -168,9 +165,7 @@ function SignUp() {
 								className="w-full h-full block text-white sign-in-btn "
 								htmlType="submit"
 							>
-								<span
-									className="font-medium text-base"
-								>
+								<span className="font-medium text-base">
 									Sign up now
 								</span>
 							</Button>

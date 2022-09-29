@@ -1,12 +1,12 @@
 import produce from "immer";
-import { SET_ACCOUNT_INFO, SET_PROFILE } from "./action";
+import {  SET_PROFILE } from "./action";
 let user = {};
 if (localStorage.getItem(user)) {
 	user = JSON.parse(localStorage.getItem(user));
 }
 const initialState = {
 	profile: user,
-	accountInfo: {},
+
 };
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -14,10 +14,10 @@ const reducer = (state = initialState, action) => {
 			return produce(state, (draft) => {
 				draft.profile = action.payload;
 			});
-		case SET_ACCOUNT_INFO:
-			return produce(state, (draft) => {
-				draft.accountInfo = action.payload;
-			});
+		// case SET_ACCOUNT_INFO:
+		// 	return produce(state, (draft) => {
+		// 		draft.accountInfo = action.payload;
+		// 	});
 		default:
 			return { ...state };
 	}

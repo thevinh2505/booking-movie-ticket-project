@@ -16,14 +16,14 @@ const initialState = {
 	movieDetail: {},
 	boxOfficeList: {},
 	selectedSeats: [],
-	otherSelectedSeats: [
-		{
-			maGhe: 49161,
-		},
-		{
-			maGhe: 49162,
-		},
-	],
+	// otherSelectedSeats: [
+	// 	{
+	// 		maGhe: 120521,
+	// 	},
+	// 	{
+	// 		maGhe: 120522,
+	// 	},
+	// ],
 	moneyCost: 0,
 };
 const reducer = (state = initialState, action) => {
