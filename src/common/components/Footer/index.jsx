@@ -169,7 +169,7 @@ function Footer() {
 								subscribe to MovfIx{" "}
 							</h5>
 							<h3 className="title tracking-wide">
-								to get exclusive benifits
+								to get exclusive benefits
 							</h3>
 							<form className="newslater-form block mt-0" onSubmit={(e)=>{
 								e.preventDefault()
@@ -192,7 +192,7 @@ function Footer() {
 			<div className="Container">
 				<div className="footer-top">
 					<div className="logo xs:w-full sm:w-40 flex items-center justify-center">
-						<a href="#0" className="">
+						<a href="#home" className="">
 							<img
 								className="w-40 xs:text-center"
 								src="https://themehut.co/wp/movflx/wp-content/themes/movflx/assets/img/logo/logo.png"
