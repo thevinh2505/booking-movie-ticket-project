@@ -19,6 +19,7 @@ module.exports = {
 				"text-grey-ticket": "var(--text-grey-ticket)",
 				"text-light-blue": "var(--text-light-blue)",
 				"text-green-hover": "var(--text-green-hover)",
+				"background-footer":"var(--background-footer)",
 			},
 		},
 		screens: {
