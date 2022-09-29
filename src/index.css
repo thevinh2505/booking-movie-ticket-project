@@ -78,6 +78,27 @@ img {
 .mw215 {
 	max-width: 215px !important;
 }
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+  }
+  
+  /* Track */
+  *::-webkit-scrollbar-track {
+	-webkit-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+			box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+	background-color: #F5F5F5;
+  }
+  
+  *::-webkit-scrollbar {
+	width: 4px;
+	background-color: #F5F5F5;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+	/* background-color: #2c385c; */
+	background-color: #2b2b5f;
+  }
 @media (min-width: 320px) {
 	.Container {
 		max-width: 576px !important;
