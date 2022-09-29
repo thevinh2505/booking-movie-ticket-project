@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @import "antd/dist/antd.css";
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 /* @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"); */
 * {
 	padding: 0;
@@ -78,39 +78,39 @@ img {
 .mw215 {
 	max-width: 215px !important;
 }
-@media (min-width:320px){
-	.Container{
-		max-width:576px!important;
+@media (min-width: 320px) {
+	.Container {
+		max-width: 576px !important;
 		padding-left: 20px;
-		padding-right:20px;
-		margin-right:auto;
-		margin-left:auto;
+		padding-right: 20px;
+		margin-right: auto;
+		margin-left: auto;
 	}
 }
-@media (min-width:576px){
-	.Container{
-		max-width:760px!important;
+@media (min-width: 576px) {
+	.Container {
+		max-width: 760px !important;
 		padding-left: 20px;
-		padding-right:20px;
-		margin-right:auto;
-		margin-left:auto;
+		padding-right: 20px;
+		margin-right: auto;
+		margin-left: auto;
 	}
 }
-@media (min-width:768px){
-	.Container{
-		max-width:760px!important;
+@media (min-width: 768px) {
+	.Container {
+		max-width: 760px !important;
 		padding-left: 15px;
-		padding-right:15px;
-		margin-right:auto;
-		margin-left:auto;
+		padding-right: 15px;
+		margin-right: auto;
+		margin-left: auto;
 	}
 }
-@media (min-width:1200px){
-	.Container{
-		max-width:1170px!important;
+@media (min-width: 1200px) {
+	.Container {
+		max-width: 1170px !important;
 		padding-left: 15px;
-		padding-right:15px;
-		margin-right:auto;
-		margin-left:auto;
+		padding-right: 15px;
+		margin-right: auto;
+		margin-left: auto;
 	}
 }

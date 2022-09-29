@@ -87,7 +87,7 @@
 }
 .seat-selected,
 .selected {
-	background-color: var(--primary-color);
+	background-color: var(--primary-color-user);
 }
 .other-selected{
 	background-color: #E94560;

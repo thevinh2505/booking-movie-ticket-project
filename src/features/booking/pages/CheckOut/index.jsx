@@ -169,8 +169,7 @@ function CheckOut(props) {
 						className={`relative seat ${classSeatVip} ${classBookedSeat} ${classSelectedSeat} `}
 					>
 						<p className="font-medium seat-position absolute">
-							
-								{seat.stt}
+							{seat.stt}
 						</p>
 					</button>
 					{(index + 1) % 16 === 0 ? <br /> : ""}
