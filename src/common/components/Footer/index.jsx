@@ -191,7 +191,7 @@ function Footer() {
 			</div>
 			<div className="Container">
 				<div className="footer-top">
-					<div className="logo xs:w-full sm:w-40 flex items-center justify-center">
+					<div className="logo xs:w-full sm:w-40 mt-2 flex items-center justify-center">
 						<a href="#home" className="">
 							<img
 								className="w-40 xs:text-center"
@@ -201,27 +201,27 @@ function Footer() {
 						</a>
 					</div>
 					<ul className="social-icons flex flex-wrap xs:justify-center xs:w-full sm:w-72">
-						<li className="pr-4 pt-2">
+						<li className="pr-4 sm:pt-2 xs:pt-0">
 							<a href="#0" className=' flex items-center justify-center w-9 h-9 leading-9 text-white text-center rounded-full text-sm bg-transparent' style={{border:"1px solid rgba(255,255,255,0.1)"}} >
 								<FaFacebookF />
 							</a>
 						</li>
-						<li className="pr-4 pt-2">
+						<li className="pr-4 sm:pt-2 xs:pt-0">
 							<a href="#0" className='flex items-center justify-center duration-500 w-9 h-9 leading-9 text-white text-center rounded-full text-sm bg-transparent' style={{border:"1px solid rgba(255,255,255,0.1)"}} >
 								<FaTwitter/>
 							</a>
 						</li>
-						<li className="pr-4 pt-2">
+						<li className="pr-4 sm:pt-2 xs:pt-0">
 							<a href="#0" className='flex items-center justify-center duration-500 w-9 h-9 leading-9 text-white text-center rounded-full text-sm bg-transparent' style={{border:"1px solid rgba(255,255,255,0.1)"}} >
 								<FaPinterestP/>
 							</a>
 						</li>
-						<li className="pr-4 pt-2">
+						<li className="pr-4 sm:pt-2 xs:pt-0">
 							<a href="#0" className='flex items-center justify-center duration-500 w-9 h-9 leading-9 text-white text-center rounded-full text-sm bg-transparent' style={{border:"1px solid rgba(255,255,255,0.1)"}} >
 								<FaGoogle/>
 							</a>
 						</li>
-						<li className="pr-4 pt-2">
+						<li className="pr-4 sm:pt-2 xs:pt-0">
 							<a href="#0" className='flex items-center justify-center duration-500 w-9 h-9 leading-9 text-white text-center rounded-full text-sm bg-transparent' style={{border:"1px solid rgba(255,255,255,0.1)"}} >
 								<FaInstagram/>
 							</a>
@@ -236,7 +236,7 @@ function Footer() {
 								<a href="https://github.com/thevinh2505">Movflx </a>
 							</p>
 						</div>
-						<ul className="links mb-6 flex flex-wrap">
+						<ul className="links mb-6 flex flex-wrap xs:justify-around sm:justify-end">
 							<li>
 								<a href="#0">About</a>
 							</li>

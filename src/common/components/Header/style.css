@@ -1,59 +1,77 @@
-.w-150px{
-    width: 150px;
+.w-150px {
+	width: 150px;
 }
-.header{
-    border-bottom: 1px solid rgba(255, 255, 255, 0.102);
+
+header.scroll-header{
+	background-color: var(--background-footer);
+    animation-name: fadeInDown ;
+    animation-duration: 1s;
+    border:none;
+
 }
-.header-logo-img{
-    min-height: 70px;
+.header-logo-img {
+	min-height: 70px;
 }
-.signInBtn{
-    transition: all .7s ease;
+.signInBtn {
+	transition: all 0.7s ease;
 }
 /* .signInBtn:hover>svg,.signInBtn:hover>span{
 
     color: var(--primary-color);
 } */
 /* MOBILE MENU  */
-.mobile-menu{
-    width: 300px;
-    padding-right: 30px;
-    transition: all .7s ease;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(100%);
+.mobile-menu {
+	width: 300px;
+	padding-right: 30px;
+	transition: all 0.7s ease;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateX(100%);
 }
-.mobile-menu-item:first-child{
-    border-top: 2px solid var(--primary-color)!important;
+.mobile-menu-item:first-child {
+	border-top: 2px solid var(--primary-color) !important;
 }
-.menu-box{
-    background: var(--secondary-color-user);
-    box-shadow: -9px 0 14px 0px rgb(0 0 0 / 6%);
+.menu-box {
+	background: var(--secondary-color-user);
+	box-shadow: -9px 0 14px 0px rgb(0 0 0 / 6%);
 }
-.mobile-menu .menu-box .close-btn{
-    transition: all .7s ease;
-
+.mobile-menu .menu-box .close-btn {
+	transition: all 0.7s ease;
 }
-.mobile-menu .menu-box .mobile-menu-item,.social-links{
-    border-top:1px solid rgb(255 255 255 / 10%) ;
+.mobile-menu .menu-box .mobile-menu-item,
+.social-links {
+	border-top: 1px solid rgb(255 255 255 / 10%);
 }
 /* MENU BACKDROP  */
-.menu-backdrop{
-    background: var(--secondary-color);
-    opacity:0;
-    visibility: hidden;
-    transition: all .7s ease;
+.menu-backdrop {
+	background: var(--secondary-color);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.7s ease;
 }
 /* MOBILE VISIBLE  */
-.mobile-menu-visible .mobile-menu .close-btn{
-    transform: rotate(360deg);
+.mobile-menu-visible .mobile-menu .close-btn {
+	transform: rotate(360deg);
 }
-.mobile-menu-visible .mobile-menu{
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
+.mobile-menu-visible .mobile-menu {
+	opacity: 1;
+	visibility: visible;
+	transform: translateX(0);
 }
-.mobile-menu-visible .menu-backdrop{
-    opacity:0.8;
-    visibility: visible;
+.mobile-menu-visible .menu-backdrop {
+	opacity: 0.8;
+	visibility: visible;
+}
+
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(-20px);
+		transform: translateY(-20px);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+	}
 }

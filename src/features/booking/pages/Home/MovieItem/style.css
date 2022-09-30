@@ -86,3 +86,15 @@
 .ReactModal__Content .ReactModal__Content--after-open{
     background:  transparent !important;
 }
+@media (max-width:576px){
+    .film_name--age{
+        font-size: 10px;
+        padding:4px;
+    }
+    .duration{
+        font-size: 11px;
+    }
+    .rating{
+        font-size: 11px;
+    }
+}

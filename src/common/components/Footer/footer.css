@@ -189,18 +189,41 @@
 }
 @media (max-width: 575px) {
     .padding-bottom{
-        padding-bottom: 40px;
+        padding-bottom: 20px;
     }
 	.newslater-wrapper .cate {
 		margin-bottom: 15px;
-		font-size: 18px;
+		font-size: 16px;
 	}
 	.newslater-wrapper .title {
 		margin-bottom: 30px;
+		font-size: 18px;
 	}
     .newslater-form button {
-        padding: 0 25px;
+        padding: 0 20px;
+		font-size: 14px;
+		height: 40px;
     }
+	.newslater-container p{
+		font-size: 14px;
+		
+	}
+	.newslater-form input{
+		font-size: 14px;
+		height:40px;
+	}
+	.newslater-container{
+		padding:30px 20px 20px; 
+	}
+	.footer-top{
+		padding-bottom: 0;
+	}
+	.footer-bottom{
+		padding:10px 0 20px;
+	}
+	.footer-bottom .links{
+		margin-bottom: 20px;
+	}
 }
 @media (min-width: 576px) {
 	.newslater-wrapper .cate {

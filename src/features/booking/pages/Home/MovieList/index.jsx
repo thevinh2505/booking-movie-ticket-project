@@ -8,9 +8,9 @@ function MovieList() {
     console.log(movieList,'1')
 	return (
 		<div className="w-full block  mx-auto">
-			<Row className="w-full" gutter={{ xs:40, sm: 40, md:50, lg: 50 ,xl:60}}>
+			<Row className="w-full px-3" gutter={{ xs:24, sm: 32, md:50, lg: 50 ,xl:60}} style={{marginInline:'-15px'}}>
                 {movieList.map(item=>{
-                    return <Col className="w-full" key={item.maPhim} xl={6} md={8} sm={12} xs={24}  >
+                    return <Col className="w-full" key={item.maPhim} xl={6} md={8} sm={12} xs={12}  >
                         <MovieItem  item={item}/>
                     </Col>
                 })}

@@ -4,7 +4,7 @@
 	background-size: contain;
 }
 .sign-in-container {
-	padding:30px 24px 40px; 
+	padding:30px 24px 10px; 
 	width: 400px;
 	background-image: linear-gradient(
 		to bottom,
@@ -71,13 +71,14 @@
 } */
 @media (max-width: 576px){
     .sign-in-container{
-        width: 330px;
-		padding:40px 20px 20px;
+        width: 310px;
+		padding:25px 20px 0;
     }
 	.inputBox{
-		width: 280px;
+		width: 260px;
+		margin-top: 20px;
 	}
 	.sign-in-title-text{
-		font-size: 22px;
+		font-size: 20px;
 	}
 }

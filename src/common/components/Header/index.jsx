@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import {
 	FaBars,
@@ -14,6 +14,10 @@ import { NavLink } from "react-router-dom";
 import "./style.css";
 
 function Header() {
+	const [scroll,setScroll]=useState(false)
+	window.addEventListener('scroll',()=>{
+		setScroll(window.scrollY > 80)
+	})
 	const barsRef = useRef();
 	const headerRef = useRef();
 	const closeBtnRef = useRef();
@@ -25,10 +29,19 @@ function Header() {
 		e.preventDefault();
 		headerRef.current.classList.remove("mobile-menu-visible");
 	};
+	const headerStyle={
+		color:'#e9eeff',
+		zIndex:999,
+		position:'fixed',
+		top:0,
+		width:'100%',
+		borderBottom:' 1px solid rgba(255, 255, 255, 0.102)'
+	}
 	return (
 		<header
 			ref={headerRef}
-			className="bg-secondary-color header relative  z-50 "
+			className={scroll?'scroll-header':''}
+			style={headerStyle}
 		>
 			<div className="container mx-auto 2xl:px-20">
 				{/* SCREEN MENU  */}

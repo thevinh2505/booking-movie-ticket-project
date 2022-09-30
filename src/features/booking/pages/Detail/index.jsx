@@ -111,14 +111,14 @@ function DetailBanner(props) {
 							</div>
 						</div>
 						<div className="details-banner-content offset-lg-3">
-							<h3 className="title xs:text-2xl sm:text-3xl  text-white font-semibold mb-2 cursor-default text">
+							<h3 className="title xs:text-xl sm:text-3xl  text-white font-semibold mb-2 cursor-default text">
 								{movieDetail.tenPhim}
 							</h3>
 							<p className="mt-1 text-text-light-blue xs:text-xs sm:text-sm tracking-wide xs:mb-3 sm:mb-5 cursor-default">
 								ENGLISH , VIETNAMESE
 							</p>
 							<div
-								className="cursor-pointer xs:text-xs sm:text-sm text-text-light-blue duration-500 xs:mb-3 sm:mb-4 tracking-widest rounded-2xl py-1.5 px-4 inline-block light-button"
+								className="cursor-pointer xs:text-xs sm:text-sm text-text-light-blue duration-500 xs:mb-3 xs:tracking-wide sm:mb-4 tracking-widest rounded-2xl py-1.5 px-4 inline-block light-button"
 								style={{
 									border: "1px solid rgba(163, 177, 198, 0.2)",
 								}}
@@ -128,16 +128,16 @@ function DetailBanner(props) {
 							<div className="flex justify-between items-center text-text-light-blue flex-wrap pb-4 gap-4">
 								<div className="flex items-center ">
 									<div className="flex items-center my-1 mr-3 cursor-default">
-										<FaCalendarAlt />
-										<p className="ml-1 text-sm tracking-wider">
+										<FaCalendarAlt className="xs:text-sm" />
+										<p className="ml-1 sm:text-sm xs:text-xs xs:tracking-wide tracking-wider">
 											{moment(
 												movieDetail.ngayChieuGioChieu
 											).format("DD-M-YYYY")}
 										</p>
 									</div>
 									<div className="flex items-center my-1 mx-3 cursor-default">
-										<FaRegClock />
-										<p className="ml-1 text-sm">
+										<FaRegClock className="xs:text-sm" />
+										<p className="ml-1 sm:text-sm xs:text-xs">
 											2 hrs 50 mins
 										</p>
 									</div>
@@ -170,19 +170,19 @@ function DetailBanner(props) {
 					backgroundColor: "#001932",
 					borderTop: "1px solid #17305f",
 					borderBottom: "1px solid #17305f",
-					minHeight: "185px",
+					minHeight: "150px",
 				}}
 			>
 				<div className="Container block ">
 					<div className="offset-lg-3">
 						<h4
-							className=" xs:text-lg sm:text-xl tracking-wide xs:mb-1 sm:mb-2"
+							className=" xs:text-base sm:text-xl tracking-wide xs:mb-1 sm:mb-2"
 							style={{ color: "#3dd9d6" }}
 						>
 							Movie content:
 						</h4>
 						<p
-							className=" xl:w-3/4 w-full xs:text-sm sm:text-base tracking-wide  font-normal "
+							className=" xl:w-3/4 w-full xs:text-xs sm:text-base tracking-wide  font-normal "
 							style={{ color: "#dbe2fb", lineHeight: "1.4" }}
 						>
 							{movieDetail.moTa}
@@ -245,11 +245,11 @@ function DetailLocation(props) {
 	return (
 		<Fragment>
 			<div
-				className="  xs:pt-4 sm:pt-5 lg-pt-10"
+				className="  xs:pt-4 sm:pt-5 lg-pt-10 mb-20"
 				style={{ backgroundColor: "#001932" }}
 			>
 				<div className="Container">
-					<h2 className="text-text-grey xs:mb-4 sm:mb-5 sm:text-xl xs:text-lg font-normal leading-4">
+					<h2 className="text-text-grey xs:mb-3 sm:mb-5 sm:text-xl xs:text-base font-normal leading-4">
 						Choose cinema:
 					</h2>
 					<div className="flex items-center justify-left  logo-row">
@@ -270,17 +270,17 @@ function DetailLocation(props) {
 						})}
 					</div>
 					<div
-						className="xs:mt-4 sm:mt-5 lg:mt-10 cursor-default pb-3"
+						className="xs:mt-3 sm:mt-5 lg:mt-10 cursor-default pb-3"
 						style={{ borderBottom: " 1px solid #212f50" }}
 					>
 						<h2
-							className="text-white xs:text-lg sm:text-xl capitalize"
+							className="text-white xs:text-base sm:text-xl capitalize"
 							style={{ color: "#dbe2fb" }}
 						>
 							{schedule.tenHeThongRap}
 						</h2>
 						<p
-							className="xs:text-sm sm:text-base"
+							className="xs:text-xs sm:text-sm md:text-base"
 							style={{ color: "#99a5b2" }}
 						>
 							Choose the cinema and schedule you want to see
@@ -306,7 +306,7 @@ function DetailLocation(props) {
 						return (
 							<Fragment>
 								<div
-									className="pt-3"
+									className="sm:pt-3 xs:pt-5"
 									style={{
 										borderBottom:
 											"1px solid rgb(33, 47, 80)",
@@ -315,7 +315,7 @@ function DetailLocation(props) {
 									<div className="cinema-agency flex pb-1 items-center justify-between">
 										<div className="flex items-center">
 											<img
-												style={{ width: "38px" }}
+												className="xs:w-8 sm:w-9 lg:w-10"
 												src={schedule.logo}
 												alt="logo he thong rap"
 											/>
@@ -339,7 +339,7 @@ function DetailLocation(props) {
 										<p className="text-sm text-text-grey font-medium">
 											Show times:
 										</p>
-										<div className="flex flex-wrap gap-3 pb-4 mt-3">
+										<div className="flex flex-wrap gap-3 sm:pb-4 xs:pb-6 mt-3">
 											{currentMovie.lstLichChieuTheoPhim.map(
 												(item) => {
 													return (

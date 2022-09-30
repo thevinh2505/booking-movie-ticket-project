@@ -1,5 +1,5 @@
 .ant-pagination-item{
-    margin: 0 15px;
+    margin: 0 10px;
     background-color: #111111;
     border: 2px solid wheat;
     transition: all .3s ease-in-out;
@@ -42,4 +42,7 @@
     border: 2px solid rgba(245, 222, 179,.25)!important;
     color: rgba(245, 222, 179,.25)!important;
     outline: none!important;
+}
+.ant-pagination-next,.ant-pagination-prev{
+    margin: 0 10px;
 }

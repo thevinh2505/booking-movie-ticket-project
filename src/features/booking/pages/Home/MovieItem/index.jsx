@@ -63,11 +63,12 @@ function MovieItem(props) {
 							<div className="film_name-bottom flex justify-between text-gray-300 cursor-default">
 								<p className="film_name--age">C18</p>
 								<div className="flex mr-1">
-									<p className="duration flex text-xs items-center">
+									<p className="duration flex sm:text-xs items-center ">
 										<FaRegClock className="mr-1 text-sm text-primary-color" />{" "}
 										120 min
 									</p>
-									<p className="rating flex text-xs items-center ml-4">
+									<p className="rating flex text-xs items-center sm:ml-4 xs:ml-1
+									">
 										<MdThumbUp className="mr-1 text-sm text-primary-color " />{" "}
 										{item.danhGia}
 									</p>
@@ -77,7 +78,7 @@ function MovieItem(props) {
 						<div className="film_button">
 							<NavLink
 								to={`/detail/${item.maPhim}`}
-								className="tracking-wider film_button--link absolute w-full text-xl text-center bg-primary-color font-bold text-white py-3 rounded opacity-0"
+								className="tracking-wider film_button--link absolute w-full xs:text-sm sm:text-xl text-center bg-primary-color font-bold text-white py-3 rounded opacity-0"
 							>
 								Book Ticket
 							</NavLink>

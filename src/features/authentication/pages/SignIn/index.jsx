@@ -47,7 +47,7 @@ function SignIn() {
 						alt="logo"
 					/>
 
-					<p className="mt-4 mb-10  mx-auto text-2xl font-medium leading-8 sign-in-title-text">
+					<p className="md:mt-4 md:mb-8 xs:mb-8 xs:mt-2  mx-auto text-2xl font-medium leading-8 sign-in-title-text">
 						Sign in to your account
 					</p>
 				</div>
@@ -63,7 +63,11 @@ function SignIn() {
 							/>
 							<span>Account Name</span>
 						</div>
-						
+						{formik.touched.taiKhoan && formik.errors.taiKhoan && (
+							<p className='text-red-600 ml-1 italic '>
+								{formik.errors.taiKhoan}
+							</p>
+						)}
 						<div className="inputBox  mx-auto">
 							<input
 								onChange={formik.handleChange}
