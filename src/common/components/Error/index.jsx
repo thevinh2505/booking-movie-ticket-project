@@ -1,14 +1,12 @@
 import React from "react";
 import styles from './style.module.css'
 
-import { Button } from "antd";
-import { useHistory } from "react-router-dom";
+
+import { NavLink} from "react-router-dom";
 
 function PageNotFound() {
-  const history=useHistory()
-  const goToHome=()=>{
-    history.push("/")
-  }
+
+
 	return (
 		<div>
         <div className={styles.background}>
@@ -17,9 +15,9 @@ function PageNotFound() {
         <div className={styles.container}>
           <div className={styles.leftSection}>
             <div className={styles.innerContent}>
-              <h1 className={styles.heading}>404</h1>
-              <p className={styles.subheading}>Oops, looks like the page you were looking for is no longer here.</p>
-              <Button onClick={goToHome} className={styles.backToHomeBtn}>Back to home</Button>
+              <h1 className={`${styles.heading} cursor-default`}>404</h1>
+              <p className={`${styles.subheading} cursor-default text-white`}>Oops, looks like the page you were looking for is no longer here.</p>
+              <NavLink to='/' className={styles.backToHomeBtn}>Back to home</NavLink>
             </div>
           </div>
           <div className={styles.rightSection}>

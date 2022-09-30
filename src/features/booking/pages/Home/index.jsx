@@ -37,10 +37,10 @@ function Home() {
 	return (
 		<div>
 			<HomeCarousel />
-			<div className=" mx-auto py-20 ">
+			<div className=" mx-auto md:pt-16 md:pb-28  xs:pt-12 xs:pb-20">
 				<MovieList className="" />
 				<Pagination
-					className="text-center Container mt-4"
+					className="text-center Container mt-3"
 					onChange={handlePagination}
 					current={config?.currentPage}
 					pageSize={config?.pageSize}

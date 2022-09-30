@@ -15,7 +15,8 @@ body {
 	/* font-family: "Roboto", sans-serif; */
 	font-family: "Poppins", sans-serif;
 	font-size: 16px;
-	background-color: #001325;
+	background-color: var(--secondary-color-user);
+	/* #001325 */
 }
 a {
 	text-decoration: none;
@@ -41,7 +42,7 @@ img {
 	--text-grey-ticket: #ccd2d8;
 	--primary-color-user: #f9ab00;
 	--primary-light-color-user: #e4d804;
-	--secondary-color-user: #001325;
+	--secondary-color-user: #001232;
 	--primary-red: #fb4226;
 	--primary-red-dark: #b42a14;
 	--background-light: #212f50;

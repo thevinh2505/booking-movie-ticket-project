@@ -1,0 +1,14 @@
+.movie-home-text:before{
+    left: 0;
+    bottom: -1px;
+    width: 98px;
+    height: 3px;
+    background: #31d7a9;
+    position: absolute;
+    content: '';
+}
+/* .home-row.ant-row{
+    margin: 0 -12px!important;
+    width: 100%;
+    padding: 0 auto!impor;
+} */

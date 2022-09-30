@@ -1,5 +1,5 @@
 import { createBrowserHistory } from "history";
-import { Route, Router, Switch } from "react-router-dom";
+import { Redirect, Route, Router, Switch } from "react-router-dom";
 import { HomeTemplate } from "templates/HomeTemplate";
 import CheckoutTemplate from "templates/CheckoutTemplate/CheckoutTemplate";
 import { lazy, Suspense } from "react";
@@ -10,7 +10,7 @@ const Detail = lazy(() => import("features/booking/pages/Detail"));
 const SignIn = lazy(() => import("features/authentication/pages/SignIn"));
 const SignUp = lazy(() => import("features/authentication/pages/SignUp"));
 const CheckOut = lazy(() => import("features/booking/pages/CheckOut"));
-
+const PageNotFound=lazy(()=>import('common/components/Error') )
 // import Contact from "features/booking/pages/Contact";
 // import Detail from "features/booking/pages/Detail";
 // import SignIn from "features/authentication/pages/SignIn";
@@ -47,6 +47,8 @@ function App() {
 				</Suspense> */}
 					<Route path="/signin" exact component={SignIn} />
 					<Route path="/signup" exact component={SignUp} />
+					<Route path="*" component={PageNotFound} />
+					<Redirect to="/" />
 				</Switch>
 			</Suspense>
 		</Router>

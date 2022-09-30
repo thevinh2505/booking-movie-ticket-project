@@ -1,4 +1,5 @@
-import React, { useRef, useState } from "react";
+import { SET_PROFILE } from "features/authentication/utils/action";
+import React, { Fragment, useRef, useState } from "react";
 
 import {
 	FaBars,
@@ -9,15 +10,65 @@ import {
 	FaInstagram,
 	FaPinterestP,
 	FaYoutube,
+	FaChevronRight,
 } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { TbLogout } from "react-icons/tb";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
 import "./style.css";
 
 function Header() {
-	const [scroll,setScroll]=useState(false)
-	window.addEventListener('scroll',()=>{
-		setScroll(window.scrollY > 80)
-	})
+	const dispatch = useDispatch();
+	const history = useHistory();
+
+	const profile = useSelector((state) => state.auth.profile);
+	const renderUserInfo = () => {
+		if (JSON.stringify(profile)==='{}') {
+			console.log("1");
+			return (
+				<NavLink
+					to="/signin"
+					className=" items-center signInBtn hover:text-primary-color md:flex xs:hidden"
+				>
+					<span className="mr-2 text-2xl  text-white inline-block duration-700 hover:text-primary-color">
+						<FaUserCircle />
+					</span>
+					<span>Sign In</span>
+				</NavLink>
+			);
+		} else {
+			console.log(2);
+			return (
+				<div className=" items-center md:flex xs:hidden">
+					<NavLink
+						to="/signin"
+						className="flex items-center signInBtn hover:text-primary-color hover:opacity-100"
+					>
+						<div className="w-8 rounded-full  inline-block duration-700 mr-2 ">
+							<img
+								src="https://avatars.dicebear.com/api/adventurer-neutral/:seed.svg"
+								className="rounded-full w-full"
+								alt="avatar"
+							/>
+						</div>
+						<span
+							className="pr-2 opacity-70 cursor-pointer hover:opacity-100"
+							style={{ borderRight: "1px solid #e5e7eb" }}
+						>
+							{profile?.hoTen}
+						</span>
+					</NavLink>
+					<p className="pl-2 opacity-70 cursor-pointer hover:text-primary-color hover:opacity-100">
+						Log Out
+					</p>
+				</div>
+			);
+		}
+	};
+	const [scroll, setScroll] = useState(false);
+	window.addEventListener("scroll", () => {
+		setScroll(window.scrollY > 80);
+	});
 	const barsRef = useRef();
 	const headerRef = useRef();
 	const closeBtnRef = useRef();
@@ -29,18 +80,29 @@ function Header() {
 		e.preventDefault();
 		headerRef.current.classList.remove("mobile-menu-visible");
 	};
-	const headerStyle={
-		color:'#e9eeff',
-		zIndex:999,
-		position:'fixed',
-		top:0,
-		width:'100%',
-		borderBottom:' 1px solid rgba(255, 255, 255, 0.102)'
-	}
+	const headerStyle = {
+		color: "#e9eeff",
+		zIndex: 999,
+		position: "fixed",
+		top: 0,
+		width: "100%",
+		borderBottom: " 1px solid rgba(255, 255, 255, 0.102)",
+	};
+	// LOG OUT
+	const handleLogOut = (e) => {
+		e.preventDefault();
+		localStorage.removeItem("user");
+		localStorage.removeItem("token");
+		dispatch({
+			type: SET_PROFILE,
+			payload: null,
+		});
+		history.goBack();
+	};
 	return (
 		<header
 			ref={headerRef}
-			className={scroll?'scroll-header':''}
+			className={scroll ? "scroll-header" : ""}
 			style={headerStyle}
 		>
 			<div className="container mx-auto 2xl:px-20">
@@ -82,15 +144,7 @@ function Header() {
 						</NavLink>
 					</div>
 					<div className="header-auth text-white flex">
-						<NavLink
-							to="/signin"
-							className="flex items-center signInBtn hover:text-primary-color"
-						>
-							<span className="mr-1 text-2xl  text-white inline-block duration-700 hover:text-primary-color">
-								<FaUserCircle />
-							</span>
-							<span>Sign In</span>
-						</NavLink>
+						{renderUserInfo()}
 						<button
 							className="block md:hidden ml-4 text-2xl hover:text-primary-color duration-700"
 							ref={barsRef}
@@ -120,11 +174,48 @@ function Header() {
 							</NavLink>
 						</div>
 						<div className="menu-outer">
-							<ul className="mobile-main-menu w-full">
+							<ul className="mobile-main-menu w-full  overflow-hidden">
+								{profile &&JSON.stringify(profile)!=='{}' ? (
+									<li className="mobile-menu-item flex items-center justify-between px-6 py-3 overflow-hidden">
+										<NavLink
+											to="/account"
+											className="flex items-center signInBtn text-white "
+										>
+											<div className="w-8 rounded-full  inline-block duration-700 mr-2 ">
+												<img
+													src="https://avatars.dicebear.com/api/adventurer-neutral/:seed.svg"
+													className="rounded-full w-full"
+													alt="avatar"
+												/>
+											</div>
+											<NavLink
+												to="/account"
+												className="pr-2  cursor-pointer "
+											>
+												{profile.hoTen}
+											</NavLink>
+										</NavLink>
+										<div>
+											<FaChevronRight />
+										</div>
+									</li>
+								) : (
+									<li className="mobile-menu-item flex items-center justify-between px-6 py-3 overflow-hidden">
+										<NavLink
+											to="/signin"
+											className="flex items-center signInBtn hover:text-primary-color"
+										>
+											<span className="mr-2 text-2xl  text-white inline-block duration-700 hover:text-primary-color">
+												<FaUserCircle />
+											</span>
+											<span>Sign In</span>
+										</NavLink>
+									</li>
+								)}
 								<li className="mobile-menu-item block">
 									<NavLink
 										className="px-6 py-3 text-white block hover:text-primary-color "
-										to="/home"
+										to="/"
 									>
 										Home
 									</NavLink>
@@ -132,7 +223,7 @@ function Header() {
 								<li className="mobile-menu-item block">
 									<NavLink
 										className="px-6 py-3 text-white block hover:text-primary-color"
-										to="/home"
+										to="/contact"
 									>
 										Contact
 									</NavLink>
@@ -140,36 +231,50 @@ function Header() {
 								<li className="mobile-menu-item block">
 									<NavLink
 										className="px-6 py-3 text-white block hover:text-primary-color"
-										to="/home"
+										to="/about"
 									>
-										About
+										About us
 									</NavLink>
 								</li>
 								<li className="mobile-menu-item block">
 									<NavLink
 										className="px-6 py-3 text-white block hover:text-primary-color"
-										to="/home"
+										to="/promotion"
 									>
 										Promotion
 									</NavLink>
 								</li>
+								{profile &&JSON.stringify(profile)!=='{}'  ? (
+									<li className="mobile-menu-item block">
+										<div
+											onClick={handleLogOut}
+											className="px-6 py-3 cursor-pointer text-white flex items-center hover:text-primary-color"
+											to="/home"
+										>
+											<span>Log Out</span>
+											<TbLogout className="inline-block ml-2 text-2xl" />
+										</div>
+									</li>
+								) : (
+									""
+								)}
 							</ul>
 						</div>
 						<div className="social-links py-8 px-6 ">
 							<div className="text-center text-white">
-								<p className="m-3 mt-0 inline-block justify-center hover:text-primary-color cursor-pointer  duration-700">
+								<p className="mr-5 mt-0 inline-block justify-center hover:text-primary-color cursor-pointer  duration-700">
 									<FaFacebookF />
 								</p>
-								<p className="m-3 mt-0 inline-block justify-center hover:text-primary-color cursor-pointer  duration-700">
+								<p className="mr-5 mt-0 inline-block justify-center hover:text-primary-color cursor-pointer  duration-700">
 									<FaTwitter />
 								</p>
-								<p className="m-3 mt-0 inline-block justify-center hover:text-primary-color cursor-pointer  duration-700">
+								<p className="mr-5 mt-0 inline-block justify-center hover:text-primary-color cursor-pointer  duration-700">
 									<FaInstagram />
 								</p>
-								<p className="m-3 mt-0 inline-block justify-center hover:text-primary-color cursor-pointer  duration-700">
+								<p className="mr-5 mt-0 inline-block justify-center hover:text-primary-color cursor-pointer  duration-700">
 									<FaPinterestP />
 								</p>
-								<p className="m-3 mt-0 inline-block justify-center hover:text-primary-color cursor-pointer  duration-700">
+								<p className="mr-5 mt-0 inline-block justify-center hover:text-primary-color cursor-pointer  duration-700">
 									<FaYoutube />
 								</p>
 							</div>
@@ -177,7 +282,7 @@ function Header() {
 					</nav>
 				</div>
 				{/* MENU BACKDROP  */}
-				<div className="menu-backdrop fixed inset-0 z-20"></div>
+				<div className="menu-backdrop fixed inset-0 z-20" style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}></div>
 			</div>
 		</header>
 	);

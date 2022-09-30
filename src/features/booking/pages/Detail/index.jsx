@@ -80,7 +80,7 @@ function DetailBanner(props) {
 		setIsOpen(false);
 	};
 	return (
-		<Fragment>
+		<div  className="" style={{backgroundColor:" #001325"}}>
 			<div
 				className="bg-no-repeat bg-cover bg-center details-banner relative"
 				style={{
@@ -190,7 +190,7 @@ function DetailBanner(props) {
 					</div>
 				</div>
 			</div>
-			<div className="Container flex lg:py-10 sm:py-5 xs:py-4">
+			<div className="Container flex lg:py-10 sm:py-5 xs:py-4" >
 				<div
 					className=" cursor-pointer xs:text-xs sm:text-sm text-text-light-blue duration-500  xs:mr-4 tracking-widest rounded-2xl py-1.5 px-4 inline-block light-button"
 					style={{
@@ -216,7 +216,7 @@ function DetailBanner(props) {
 					4DX
 				</div>
 			</div>
-		</Fragment>
+		</div>
 	);
 }
 function DetailLocation(props) {

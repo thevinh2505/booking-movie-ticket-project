@@ -15,7 +15,7 @@ const schema = yup.object().shape({
 		.required("*Vui lòng nhập")
 		.min(8, "*Tối thiểu 8 kí tự")
 		.max(16, "*Tối đa 16 kí tự"),
-});	
+});
 function SignIn() {
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -64,7 +64,7 @@ function SignIn() {
 							<span>Account Name</span>
 						</div>
 						{formik.touched.taiKhoan && formik.errors.taiKhoan && (
-							<p className='text-red-600 ml-1 italic '>
+							<p className="text-red-600 ml-1 italic ">
 								{formik.errors.taiKhoan}
 							</p>
 						)}
@@ -79,7 +79,7 @@ function SignIn() {
 							<span>Password</span>
 						</div>
 						{formik.touched.matKhau && formik.errors.matKhau && (
-							<p className='text-red-600 ml-1 italic '>
+							<p className="text-red-600 ml-1 italic ">
 								{formik.errors.matKhau}
 							</p>
 						)}

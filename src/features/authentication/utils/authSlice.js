@@ -1,12 +1,11 @@
 import produce from "immer";
-import {  SET_PROFILE } from "./action";
+import { SET_PROFILE } from "./action";
 let user = {};
-if (localStorage.getItem(user)) {
-	user = JSON.parse(localStorage.getItem(user));
+if (localStorage.getItem('user')) {
+	user = JSON.parse(localStorage.getItem('user'));
 }
 const initialState = {
 	profile: user,
-
 };
 const reducer = (state = initialState, action) => {
 	switch (action.type) {

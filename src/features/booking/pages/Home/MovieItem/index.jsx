@@ -56,7 +56,7 @@ function MovieItem(props) {
 					<div className="film_content pt-3 relative">
 						<div className="film_name">
 							<div>
-								<p className="font-medium tracking-wide inline-block text-white mb-3 hover:text-primary-color duration-500">
+								<p className="xs:text-sm md:text-base  font-medium tracking-wide inline-block text-white mb-3 hover:text-primary-color duration-500">
 									{item.tenPhim}
 								</p>
 							</div>
@@ -78,7 +78,7 @@ function MovieItem(props) {
 						<div className="film_button">
 							<NavLink
 								to={`/detail/${item.maPhim}`}
-								className="tracking-wider film_button--link absolute w-full xs:text-sm sm:text-xl text-center bg-primary-color font-bold text-white py-3 rounded opacity-0"
+								className="xs:text-sm md:text-base tracking-wider film_button--link absolute w-full  sm:text-xl text-center bg-primary-color font-bold text-white py-3 rounded opacity-0"
 							>
 								Book Ticket
 							</NavLink>

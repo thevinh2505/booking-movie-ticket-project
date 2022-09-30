@@ -24,7 +24,7 @@
 }
 @media (max-width: 770px) {
 	.background .ground {
-		height: 0vh;
+		height: 5vh;
 	}
 }
 
@@ -72,15 +72,15 @@
 .heading {
 	text-align: center;
 	font-size: 9em;
-	line-height: 1.3em;
-	margin: 2rem 0 0.5rem 0;
+	line-height: 1.2em;
+	margin: 2rem 0 0 0;
 	padding: 0;
 	text-shadow: 0 0 1rem #fefefe;
 }
 @media (max-width: 770px) {
 	.heading {
 		font-size: 7em;
-		line-height: 1.15;
+		line-height: 1.2;
 		margin: 0;
 	}
 }
@@ -94,6 +94,7 @@
 	margin: 0 auto;
 }
 .backToHomeBtn {
+	display: inline-block;
 	margin-top: 20px;
 	font-size: 18px;
 	font-weight: 600;
@@ -101,8 +102,10 @@
 	font-family: "Fira Sans", sans-serif;
 	padding: 6px 14px;
 	border-radius: 4px;
+	background-color: black;
+	color: #fefefe;
 	box-shadow: 0 0 1rem #fefefe;
-	transition: all 1s ease-in-out;
+	transition: all .3s ease-in-out;
 	border: none;
 }
 .backToHomeBtn:hover {
@@ -126,13 +129,14 @@
 		width: 100%;
 		height: 60%;
 		position: absolute;
-		bottom: 0;
+		bottom: 28px;
 	}
 }
 
 .svgimg {
 	position: absolute;
 	bottom: 0;
+	right: 0;
 	padding-top: 10vh;
 	padding-left: 1vh;
 	max-width: 100%;
