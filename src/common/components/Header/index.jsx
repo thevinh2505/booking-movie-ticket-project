@@ -23,18 +23,26 @@ function Header() {
 
 	const profile = useSelector((state) => state.auth.profile);
 	const renderUserInfo = () => {
-		if (JSON.stringify(profile)==='{}') {
+		if (JSON.stringify(profile) === "{}") {
 			console.log("1");
 			return (
-				<NavLink
-					to="/signin"
-					className=" items-center signInBtn hover:text-primary-color md:flex xs:hidden"
-				>
-					<span className="mr-2 text-2xl  text-white inline-block duration-700 hover:text-primary-color">
-						<FaUserCircle />
-					</span>
-					<span>Sign In</span>
-				</NavLink>
+				<div className="flex items-center">
+					<NavLink
+						to="/signin"
+						className=" items-center signInBtn hover:text-primary-color md:flex xs:hidden  pr-2 signin-in-header opacity-60"
+					>
+						<span className="mr-2 text-2xl  text-white inline-block duration-700 hover:text-primary-color">
+							<FaUserCircle />
+						</span>
+						<span>Sign In</span>
+					</NavLink>
+					<NavLink
+						to="/signup"
+						className=" items-center signInBtn hover:text-primary-color lg:flex xs:hidden opacity-60"
+					>
+						<span className="ml-2">Sign Up</span>
+					</NavLink>
+				</div>
 			);
 		} else {
 			console.log(2);
@@ -97,7 +105,11 @@ function Header() {
 			type: SET_PROFILE,
 			payload: null,
 		});
+		handleClick();
 		history.goBack();
+	};
+	const handleClick = () => {
+		closeBtnRef.current.click();
 	};
 	return (
 		<header
@@ -142,6 +154,12 @@ function Header() {
 						>
 							Promotion
 						</NavLink>
+						<NavLink
+							className="text-white px-3 hover:text-primary-color"
+							to="/download"
+						>
+							Download
+						</NavLink>
 					</div>
 					<div className="header-auth text-white flex">
 						{renderUserInfo()}
@@ -165,7 +183,7 @@ function Header() {
 							<FaTimes />
 						</div>
 						<div className="nav-logo relative text-left py-8 px-6">
-							<NavLink to="/home">
+							<NavLink to="/home" onClick={handleClick}>
 								<img
 									src="https://themehut.co/wp/movflx/wp-content/themes/movflx/assets/img/logo/logo.png"
 									alt="logo"
@@ -175,11 +193,12 @@ function Header() {
 						</div>
 						<div className="menu-outer">
 							<ul className="mobile-main-menu w-full  overflow-hidden">
-								{profile &&JSON.stringify(profile)!=='{}' ? (
+								{profile && JSON.stringify(profile) !== "{}" ? (
 									<li className="mobile-menu-item flex items-center justify-between px-6 py-3 overflow-hidden">
 										<NavLink
 											to="/account"
 											className="flex items-center signInBtn text-white "
+											onClick={handleClick}
 										>
 											<div className="w-8 rounded-full  inline-block duration-700 mr-2 ">
 												<img
@@ -203,6 +222,7 @@ function Header() {
 									<li className="mobile-menu-item flex items-center justify-between px-6 py-3 overflow-hidden">
 										<NavLink
 											to="/signin"
+											onClick={handleClick}
 											className="flex items-center signInBtn hover:text-primary-color"
 										>
 											<span className="mr-2 text-2xl  text-white inline-block duration-700 hover:text-primary-color">
@@ -216,6 +236,7 @@ function Header() {
 									<NavLink
 										className="px-6 py-3 text-white block hover:text-primary-color "
 										to="/"
+										onClick={handleClick}
 									>
 										Home
 									</NavLink>
@@ -224,6 +245,7 @@ function Header() {
 									<NavLink
 										className="px-6 py-3 text-white block hover:text-primary-color"
 										to="/contact"
+										onClick={handleClick}
 									>
 										Contact
 									</NavLink>
@@ -232,19 +254,30 @@ function Header() {
 									<NavLink
 										className="px-6 py-3 text-white block hover:text-primary-color"
 										to="/about"
+										onClick={handleClick}
 									>
 										About us
 									</NavLink>
 								</li>
 								<li className="mobile-menu-item block">
 									<NavLink
+										onClick={handleClick}
 										className="px-6 py-3 text-white block hover:text-primary-color"
 										to="/promotion"
 									>
 										Promotion
 									</NavLink>
 								</li>
-								{profile &&JSON.stringify(profile)!=='{}'  ? (
+								<li className="mobile-menu-item block">
+									<NavLink
+										onClick={handleClick}
+										className="px-6 py-3 text-white block hover:text-primary-color"
+										to="/download"
+									>
+										Download
+									</NavLink>
+								</li>
+								{profile && JSON.stringify(profile) !== "{}" ? (
 									<li className="mobile-menu-item block">
 										<div
 											onClick={handleLogOut}
@@ -282,7 +315,10 @@ function Header() {
 					</nav>
 				</div>
 				{/* MENU BACKDROP  */}
-				<div className="menu-backdrop fixed inset-0 z-20" style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}></div>
+				<div
+					className="menu-backdrop fixed inset-0 z-20"
+					style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+				></div>
 			</div>
 		</header>
 	);
