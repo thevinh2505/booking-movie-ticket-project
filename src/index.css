@@ -114,7 +114,10 @@ img {
 	margin-right: auto;
 	margin-left: auto;
 }
-
+.about-section>.Container{
+	margin: 0;
+	padding: 0;
+}
 @media (min-width: 576px) {
 	.Container {
 		max-width: 540px !important;

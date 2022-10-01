@@ -311,7 +311,7 @@ h6{
 @media (min-width: 992px) {
 	
 	.contact-info,
-    .contact-counter {
+    .contact-counter,.about-section {
 		padding-top: 120px;
 		padding-bottom: 120px;
 	}

@@ -75,7 +75,7 @@ function Header() {
 	};
 	const [scroll, setScroll] = useState(false);
 	window.addEventListener("scroll", () => {
-		setScroll(window.scrollY > 80);
+		setScroll(window.scrollY > 50);
 	});
 	const barsRef = useRef();
 	const headerRef = useRef();
@@ -138,13 +138,13 @@ function Header() {
 						</NavLink>
 						<NavLink
 							className="text-white px-3 hover:text-primary-color"
-							to="/home"
+							to="/contact"
 						>
 							Contact
 						</NavLink>
 						<NavLink
 							className="text-white px-3 hover:text-primary-color"
-							to="/home"
+							to="/about"
 						>
 							About
 						</NavLink>

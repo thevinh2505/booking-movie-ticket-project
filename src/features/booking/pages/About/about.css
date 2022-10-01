@@ -1,0 +1,30 @@
+.about-section{
+    padding-bottom: 80px;
+    padding-top: 80px;
+}
+.event-about-content .section-header-3 p {
+    margin-bottom: 37px;
+}
+.section-header-3 p {
+    font-size: 16px;
+}
+.custom-button {
+    background-image: -webkit-linear-gradient(169deg, #5560ff 17%, #aa52a1 63%, #ff4343 100%);
+    padding: 11px 24px;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    border-radius: 25px;
+    display: inline-block;
+    margin-right: auto;
+}
+.custom-button:hover {
+    -webkit-box-shadow: 0px 10px 15px 0px rgb(59 55 188 / 50%);
+    box-shadow: 0px 10px 15px 0px rgb(59 55 188 / 50%);
+}
+@media (max-width: 575px)
+{
+    .event-about-content .section-header-3 p {
+        margin-bottom: 27px;
+    }
+}
