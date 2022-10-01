@@ -1,5 +1,5 @@
 import { SET_PROFILE } from "features/authentication/utils/action";
-import React, { Fragment, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 
 import {
 	FaBars,
@@ -117,7 +117,7 @@ function Header() {
 			className={scroll ? "scroll-header" : ""}
 			style={headerStyle}
 		>
-			<div className="container mx-auto 2xl:px-20">
+			<div className="Container mx-auto 2xl:px-20">
 				{/* SCREEN MENU  */}
 				<div className="screen-menu flex justify-between items-center py-4">
 					<div className="header-logo ">

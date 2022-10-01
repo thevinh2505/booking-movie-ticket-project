@@ -70,7 +70,7 @@
 	margin: 0;
 	line-height: 1.3;
 	margin-top: -6px;
-	font-weight: 500!important;
+	font-weight: 600!important;
 }
 .newslater-wrapper .title,
 .newslater-wrapper .cate {
@@ -87,6 +87,7 @@
 	margin-top: -7px;
     line-height: 1.3;
     color: #ffffff;
+	font-weight: 600;
 }
 .newslater-form {
     margin-bottom: 28px;
@@ -198,6 +199,7 @@
 	.newslater-wrapper .title {
 		margin-bottom: 30px;
 		font-size: 18px;
+		
 	}
     .newslater-form button {
         padding: 0 20px;
@@ -205,7 +207,7 @@
 		height: 40px;
     }
 	.newslater-container p{
-		font-size: 14px;
+		font-size: 15px;
 		
 	}
 	.newslater-form input{
@@ -213,7 +215,7 @@
 		height:40px;
 	}
 	.newslater-container{
-		padding:30px 20px 20px; 
+		padding:50px 20px 40px; 
 	}
 	.footer-top{
 		padding-bottom: 0;
