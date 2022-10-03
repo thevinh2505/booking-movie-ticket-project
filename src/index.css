@@ -114,14 +114,12 @@ img {
 	margin-right: auto;
 	margin-left: auto;
 }
-.about-section>.Container{
-	margin: 0;
-	padding: 0;
-}
+
 @media (min-width: 576px) {
 	.Container {
 		max-width: 540px !important;
 	}
+	
 }
 @media (min-width: 768px) {
 	.Container {
@@ -136,9 +134,7 @@ img {
 @media (min-width: 1200px) {
 	.Container {
 		max-width: 1170px !important;
-		padding-left: 15px;
-		padding-right: 15px;
-		margin-right: auto;
-		margin-left: auto;
+
 	}
+
 }

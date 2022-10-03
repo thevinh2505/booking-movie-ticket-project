@@ -22,8 +22,9 @@ function Header() {
 	const history = useHistory();
 
 	const profile = useSelector((state) => state.auth.profile);
+	console.log("profile", profile);
 	const renderUserInfo = () => {
-		if (JSON.stringify(profile) === "{}") {
+		if (!localStorage.getItem("user")) {
 			console.log("1");
 			return (
 				<div className="flex items-center">
@@ -66,7 +67,10 @@ function Header() {
 							{profile?.hoTen}
 						</span>
 					</NavLink>
-					<p className="pl-2 opacity-70 cursor-pointer hover:text-primary-color hover:opacity-100">
+					<p
+						className="pl-2 opacity-70 cursor-pointer hover:text-primary-color hover:opacity-100"
+						onClick={handleLogOut}
+					>
 						Log Out
 					</p>
 				</div>

@@ -5,7 +5,7 @@ function Footer() {
 	return (
 		<footer className="footer-section relative">
 			<div className="newslater-section padding-bottom ">
-				<div className="Container xl:px-10" >
+				<div className="Container " >
 					<div
 						className="newslater-container bg_img"
 						data-background="http://pixner.net/boleto/demo/assets/images/newslater/newslater-bg01.jpg"
@@ -42,7 +42,7 @@ function Footer() {
 					</div>
 				</div>
 			</div>
-			<div className="Container xl:px-10">
+			<div className="Container ">
 				<div className="footer-top">
 					<div className="logo xs:w-full sm:w-40 mt-2 flex items-center justify-center">
 						<a href="#home" className="">

@@ -1,7 +1,7 @@
 .main-page-header {
     padding: 260px 0 117px;
 }
-.contact-counter {
+.contact-counter,.philosophy-section {
 	padding-top: 80px;
 	padding-bottom: 80px;
 }
@@ -241,6 +241,15 @@ h6{
 .contact-counter-item:last-child{
     margin-bottom: 0;
 }
+/* .about-background-1{
+    background-image: url(https://media.discordapp.net/attachments/527086735738273804/1025741299560759387/about-banner1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 100%;
+    min-width:650px;
+} */
+
 @media (max-width:575px){
     .contact-info .info-area::before {
         width: 0;
@@ -263,6 +272,12 @@ h6{
     }
     .main-page-header {
         padding: 201px 0 96px;
+    }
+    .event-about-content .section-header-3 p {
+        margin-bottom: 27px;
+    }
+    .event-about-content>.section-header-3{
+        margin-bottom: 0;
     }
 }
 @media (min-width: 768px) and (max-width: 991px)
@@ -311,7 +326,7 @@ h6{
 @media (min-width: 992px) {
 	
 	.contact-info,
-    .contact-counter,.about-section {
+    .contact-counter{
 		padding-top: 120px;
 		padding-bottom: 120px;
 	}
@@ -324,4 +339,11 @@ h6{
 		margin-top: 15px;
 	}
     
+}
+@media (min-width: 992px) {
+
+}
+@media (min-width: 1200px) {
+
+
 }
