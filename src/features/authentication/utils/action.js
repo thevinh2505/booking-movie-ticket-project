@@ -1,4 +1,6 @@
 import { instance } from "api/instance";
+
+
 export const SET_PROFILE="auth/SET_PROFILE";
 export const SET_ACCOUNT_INFO="auth/SET_ACCOUNT_INFO"
 // action đăng nhập
@@ -24,6 +26,7 @@ export const signInAction = (user) => {
 				type: SET_PROFILE,
 				payload: profile,
 			});
+
 
 		} catch (err) {
 			console.log(err);

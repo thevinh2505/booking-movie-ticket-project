@@ -1,4 +1,6 @@
 import { Pagination } from "antd";
+// import AppDownload from "features/booking/components/AppDownload";
+
 import {
 	fetchCinemaScheduleAction,
 	fetchMovieListAction,
@@ -46,6 +48,7 @@ function Home() {
 					pageSize={config?.pageSize}
 					total={config?.totalCount}
 				/>
+				{/* <AppDownload/> */}
 				{/* <HomeMenu schedule={schedule} /> */}
 			</div>
 		</div>

@@ -60,15 +60,17 @@ function MovieItem(props) {
 									{item.tenPhim}
 								</p>
 							</div>
-							<div className="film_name-bottom flex justify-between text-gray-300 cursor-default">
+							<div className="film_name-bottom flex justify-between items-center text-gray-300 cursor-default">
 								<p className="film_name--age">C18</p>
 								<div className="flex mr-1">
 									<p className="duration flex sm:text-xs items-center ">
 										<FaRegClock className="mr-1 text-sm text-primary-color" />{" "}
 										120 min
 									</p>
-									<p className="rating flex text-xs items-center sm:ml-4 xs:ml-1
-									">
+									<p
+										className="rating flex text-xs items-center sm:ml-4 xs:ml-1
+									"
+									>
 										<MdThumbUp className="mr-1 text-sm text-primary-color " />{" "}
 										{item.danhGia}
 									</p>

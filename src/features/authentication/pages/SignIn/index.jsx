@@ -29,6 +29,7 @@ function SignIn() {
 		},
 		onSubmit: (values) => {
 			handleSignIn(values);
+			
 			history.goBack();
 		},
 		validationSchema: schema,
@@ -36,6 +37,7 @@ function SignIn() {
 	});
 	const handleSignIn = (user) => {
 		dispatch(signInAction(user));
+		
 	};
 	return (
 		<div className="min-w-screen min-h-screen l bg-login items-center justify-center flex">

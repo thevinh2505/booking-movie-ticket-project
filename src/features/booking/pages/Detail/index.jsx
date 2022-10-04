@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import "@tsamantanis/react-glassmorphism/dist/index.css";
+
 import {
 	FaCalendarAlt,
 	FaRegClock,
@@ -79,144 +79,163 @@ function DetailBanner(props) {
 	const closeModal = () => {
 		setIsOpen(false);
 	};
+
 	return (
-		<div  className="" style={{backgroundColor:" #001325"}}>
-			<div
-				className="bg-no-repeat bg-cover bg-center details-banner relative"
-				style={{
-					backgroundImage:
-						"url('http://pixner.net/boleto/demo/assets/images/banner/banner03.jpg')",
-					maxHeight: "323px",
-				}}
-			>
-				<div className="Container xs:pt-10 sm:pt-16 lg:pt-36">
-					<div className="details-banner-wrapper relative ">
-						<div
-							className="details-banner-thumb absolute top-0 left-0 "
-							style={{ maxWidth: "255px" }}
-						>
-							<div className="film_item relative">
-								<img
-									style={{ maxWidth: "255px" }}
-									className="w-full "
-									src={movieDetail.hinhAnh}
-									alt="anh phim"
-								/>
-								<div
-									onClick={openModal}
-									className="film_trailer-btn absolute top"
-								>
-									<BsPlayCircleFill className="trailer-btn absolute" />
-								</div>
-							</div>
-						</div>
-						<div className="details-banner-content offset-lg-3">
-							<h3 className="title xs:text-xl sm:text-3xl  text-white font-semibold mb-2 cursor-default text">
-								{movieDetail.tenPhim}
-							</h3>
-							<p className="mt-1 text-text-light-blue xs:text-xs sm:text-sm tracking-wide xs:mb-3 sm:mb-5 cursor-default">
-								ENGLISH , VIETNAMESE
-							</p>
+		<>
+			<div className="" style={{ backgroundColor: " #001325" }}>
+				<div
+					className="bg-no-repeat bg-cover bg-center details-banner relative"
+					style={{
+						backgroundImage:
+							"url('http://pixner.net/boleto/demo/assets/images/banner/banner03.jpg')",
+						maxHeight: "323px",
+					}}
+				>
+					<div className="Container xs:pt-10 sm:pt-16 lg:pt-36">
+						<div className="details-banner-wrapper relative ">
 							<div
-								className="cursor-pointer xs:text-xs sm:text-sm text-text-light-blue duration-500 xs:mb-3 xs:tracking-wide sm:mb-4 tracking-widest rounded-2xl py-1.5 px-4 inline-block light-button"
-								style={{
-									border: "1px solid rgba(163, 177, 198, 0.2)",
-								}}
+								className="details-banner-thumb absolute top-0 left-0 "
+								style={{ maxWidth: "255px" }}
 							>
-								ACTION
-							</div>
-							<div className="flex justify-between items-center text-text-light-blue flex-wrap pb-4 gap-4">
-								<div className="flex items-center ">
-									<div className="flex items-center my-1 mr-3 cursor-default">
-										<FaCalendarAlt className="xs:text-sm" />
-										<p className="ml-1 sm:text-sm xs:text-xs xs:tracking-wide tracking-wider">
-											{moment(
-												movieDetail.ngayChieuGioChieu
-											).format("DD-M-YYYY")}
-										</p>
-									</div>
-									<div className="flex items-center my-1 mx-3 cursor-default">
-										<FaRegClock className="xs:text-sm" />
-										<p className="ml-1 sm:text-sm xs:text-xs">
-											2 hrs 50 mins
-										</p>
+								<div className="film_item relative">
+									<img
+										style={{ maxWidth: "255px" }}
+										className="w-full "
+										src={movieDetail.hinhAnh}
+										alt="anh phim"
+									/>
+									<div
+										onClick={openModal}
+										className="film_trailer-btn absolute top"
+									>
+										<BsPlayCircleFill className="trailer-btn absolute" />
 									</div>
 								</div>
-								<div className="items-center text-white sm:flex xs:hidden">
-									<div className="text-white cursor-pointer duration-500 hover:text-text-green-hover mr-5 text-sm">
-										<FaFacebookF />
+							</div>
+							<div className="details-banner-content offset-lg-3">
+								<h3 className="title xs:text-xl sm:text-3xl  text-white font-semibold mb-2 cursor-default text">
+									{movieDetail.tenPhim}
+								</h3>
+								<p className="mt-1 text-text-light-blue xs:text-xs sm:text-sm tracking-wide xs:mb-3 sm:mb-5 cursor-default">
+									ENGLISH , VIETNAMESE
+								</p>
+								<div
+									className="cursor-pointer xs:text-xs sm:text-sm text-text-light-blue duration-500 xs:mb-3 xs:tracking-wide sm:mb-4 tracking-widest rounded-2xl py-1.5 px-4 inline-block light-button"
+									style={{
+										border: "1px solid rgba(163, 177, 198, 0.2)",
+									}}
+								>
+									ACTION
+								</div>
+								<div className="flex justify-between items-center text-text-light-blue flex-wrap pb-4 gap-4">
+									<div className="flex items-center ">
+										<div className="flex items-center my-1 mr-3 cursor-default">
+											<FaCalendarAlt className="xs:text-sm" />
+											<p className="ml-1 sm:text-sm xs:text-xs xs:tracking-wide tracking-wider">
+												{moment(
+													movieDetail.ngayChieuGioChieu
+												).format("DD-M-YYYY")}
+											</p>
+										</div>
+										<div className="flex items-center my-1 mx-3 cursor-default">
+											<FaRegClock className="xs:text-sm" />
+											<p className="ml-1 sm:text-sm xs:text-xs">
+												2 hrs 50 mins
+											</p>
+										</div>
 									</div>
-									<div className="text-white cursor-pointer duration-500 hover:text-text-green-hover mr-5 text-sm">
-										<FaTwitter />
-									</div>
-									<div className="text-white cursor-pointer duration-500 hover:text-text-green-hover mr-5 text-sm">
-										<FaPinterestP />
-									</div>
-									<div className="text-white cursor-pointer duration-500 hover:text-text-green-hover mr-5 text-sm">
-										<FaInstagram />
-									</div>
-									<div className="text-white cursor-pointer duration-500 hover:text-text-green-hover mr-5 text-sm">
-										<FaGoogle />
+									<div className="items-center text-white sm:flex xs:hidden">
+										<div className="text-white cursor-pointer duration-500 hover:text-text-green-hover mr-5 text-sm">
+											<FaFacebookF />
+										</div>
+										<div className="text-white cursor-pointer duration-500 hover:text-text-green-hover mr-5 text-sm">
+											<FaTwitter />
+										</div>
+										<div className="text-white cursor-pointer duration-500 hover:text-text-green-hover mr-5 text-sm">
+											<FaPinterestP />
+										</div>
+										<div className="text-white cursor-pointer duration-500 hover:text-text-green-hover mr-5 text-sm">
+											<FaInstagram />
+										</div>
+										<div className="text-white cursor-pointer duration-500 hover:text-text-green-hover mr-5 text-sm">
+											<FaGoogle />
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div
-				className="lg:py-10 sm:py-5 xs:py-4"
-				style={{
-					backgroundColor: "#001932",
-					borderTop: "1px solid #17305f",
-					borderBottom: "1px solid #17305f",
-					minHeight: "150px",
-				}}
-			>
-				<div className="Container block ">
-					<div className="offset-lg-3">
-						<h4
-							className=" xs:text-base sm:text-xl tracking-wide xs:mb-1 sm:mb-2"
-							style={{ color: "#3dd9d6" }}
-						>
-							Movie content:
-						</h4>
-						<p
-							className=" xl:w-3/4 w-full xs:text-xs sm:text-base tracking-wide  font-normal "
-							style={{ color: "#dbe2fb", lineHeight: "1.4" }}
-						>
-							{movieDetail.moTa}
-						</p>
+				<div
+					className="lg:py-10 sm:py-5 xs:py-4"
+					style={{
+						backgroundColor: "#001932",
+						borderTop: "1px solid #17305f",
+						borderBottom: "1px solid #17305f",
+						minHeight: "150px",
+					}}
+				>
+					<div className="Container block ">
+						<div className="offset-lg-3">
+							<h4
+								className=" xs:text-base sm:text-xl tracking-wide xs:mb-1 sm:mb-2"
+								style={{ color: "#3dd9d6" }}
+							>
+								Movie content:
+							</h4>
+							<p
+								className=" xl:w-3/4 w-full xs:text-xs sm:text-base tracking-wide  font-normal "
+								style={{ color: "#dbe2fb", lineHeight: "1.4" }}
+							>
+								{movieDetail.moTa}
+							</p>
+						</div>
+					</div>
+				</div>
+				<div className="Container flex lg:py-10 sm:py-5 xs:py-4">
+					<div
+						className=" cursor-pointer xs:text-xs sm:text-sm text-text-light-blue duration-500  xs:mr-4 tracking-widest rounded-2xl py-1.5 px-4 inline-block light-button"
+						style={{
+							border: "1px solid rgba(163, 177, 198, 0.2)",
+						}}
+					>
+						2D
+					</div>
+					<div
+						className=" cursor-pointer xs:text-xs sm:text-sm text-text-light-blue duration-500  xs:mr-4 tracking-widest rounded-2xl py-1.5 px-4 inline-block light-button"
+						style={{
+							border: "1px solid rgba(163, 177, 198, 0.2)",
+						}}
+					>
+						IMAX 2D
+					</div>
+					<div
+						className=" cursor-pointer xs:text-xs sm:text-sm text-text-light-blue duration-500  xs:mr-4 tracking-widest rounded-2xl py-1.5 px-4 inline-block light-button"
+						style={{
+							border: "1px solid rgba(163, 177, 198, 0.2)",
+						}}
+					>
+						4DX
 					</div>
 				</div>
 			</div>
-			<div className="Container flex lg:py-10 sm:py-5 xs:py-4" >
-				<div
-					className=" cursor-pointer xs:text-xs sm:text-sm text-text-light-blue duration-500  xs:mr-4 tracking-widest rounded-2xl py-1.5 px-4 inline-block light-button"
-					style={{
-						border: "1px solid rgba(163, 177, 198, 0.2)",
-					}}
-				>
-					2D
-				</div>
-				<div
-					className=" cursor-pointer xs:text-xs sm:text-sm text-text-light-blue duration-500  xs:mr-4 tracking-widest rounded-2xl py-1.5 px-4 inline-block light-button"
-					style={{
-						border: "1px solid rgba(163, 177, 198, 0.2)",
-					}}
-				>
-					IMAX 2D
-				</div>
-				<div
-					className=" cursor-pointer xs:text-xs sm:text-sm text-text-light-blue duration-500  xs:mr-4 tracking-widest rounded-2xl py-1.5 px-4 inline-block light-button"
-					style={{
-						border: "1px solid rgba(163, 177, 198, 0.2)",
-					}}
-				>
-					4DX
-				</div>
-			</div>
-		</div>
+			<Modal
+				ariaHideApp={false}
+				isOpen={modalIsOpen}
+				// onAfterOpen={afterOpenModal}
+				onRequestClose={closeModal}
+				style={customStyles}
+				contentLabel="Example Modal"
+			>
+				<ReactPlayer
+					playing={true}
+					width={640}
+					height={360}
+					controls={true}
+					url={movieDetail.trailer}
+				/>
+			</Modal>
+		</>
 	);
 }
 function DetailLocation(props) {
@@ -236,12 +255,6 @@ function DetailLocation(props) {
 	const goToBooking = (id, maHeThongRap) => {
 		history.push(`/checkout/${id}/${maHeThongRap}`);
 	};
-	// const handleChevronRef=(e)=>{
-	// 	e.preventDefault()
-	// 	chevronRef.current.classList.add("rotate-back")
-	// 	console.log('111');
-	// 	console.log(chevronRef)
-	// }
 	return (
 		<Fragment>
 			<div

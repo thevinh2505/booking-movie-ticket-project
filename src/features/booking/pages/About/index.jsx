@@ -84,8 +84,8 @@ function About() {
 			{/* PHILOSOPHY SECTION  */}
 			<section className="philosophy-section bg_img bg_quarter_img  bg_quarter_img bg_one">
 				<div className="Container">
-					<Row className="w-full">
-						<Col lg={18} className="offset-lg-3  bg_two">
+					<Row className="w-full" >
+						<Col lg={18} className="offset-lg-3  bg_two" style={{padding:'0 15px'}}>
 							<div className="philosophy-content">
 								<div className="section-header-3">
 									<span className="cate text-left">
@@ -149,7 +149,7 @@ function About() {
 					<div style={{margin:'0 -15px'}}>
 					<Row gutter={[15, 15]}>
 						<Col lg={8} xs={24}>
-							<div className="section-header-3 lg:mb-0">
+							<div className="section-header-3 mb-lg-0">
 								<span className="cate text-left">
 									quick facts
 								</span>
@@ -246,7 +246,7 @@ function About() {
 					{/* ROW  */}
 					<div style={{ marginInline: "-16px" }}>
 						<Row
-							className="gallery"
+							className="gallery "
 							style={{ marginInline: "-15px" }}
 						>
 							<Col
@@ -287,7 +287,7 @@ function About() {
 								className="lg:order-1 "
 								style={{ padding: "0 15px" }}
 							>
-								<div className="gallery-item left ">
+								<div className="gallery-item left xs:pt-8 sm:pt-0">
 									<img
 										className="w-full"
 										src="https://elead.com.vn/wp-content/uploads/2020/04/photo-1-1540693913565639768683.jpg"
@@ -348,7 +348,7 @@ function About() {
 											xs={24}
 											style={{ padding: "0 15px" }}
 										>
-											<div className="gallery-item left">
+											<div className="gallery-item left sm:pt-0 xs:pt-8">
 												<img
 													className="w-full"
 													src="https://cdn.baogiaothong.vn/files/dung.nguyen/2018/07/31/115559-len-keo-ru-gau-di-xem-phimghe-doi-cgv-49k-danh-rieng-cho-cac-couple-c2c77b86636439243449633412.jpg"

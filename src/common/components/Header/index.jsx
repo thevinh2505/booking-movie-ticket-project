@@ -144,20 +144,20 @@ function Header() {
 							className="text-white px-3 hover:text-primary-color"
 							to="/contact"
 						>
-							Contact
+							Contact Us
 						</NavLink>
 						<NavLink
 							className="text-white px-3 hover:text-primary-color"
 							to="/about"
 						>
-							About
+							About Us
 						</NavLink>
-						<NavLink
+						{/* <NavLink
 							className="text-white px-3 hover:text-primary-color"
 							to="/home"
 						>
 							Promotion
-						</NavLink>
+						</NavLink> */}
 						<NavLink
 							className="text-white px-3 hover:text-primary-color"
 							to="/download"
@@ -251,7 +251,7 @@ function Header() {
 										to="/contact"
 										onClick={handleClick}
 									>
-										Contact
+										Contact Us
 									</NavLink>
 								</li>
 								<li className="mobile-menu-item block">
@@ -260,10 +260,10 @@ function Header() {
 										to="/about"
 										onClick={handleClick}
 									>
-										About us
+										About Us
 									</NavLink>
 								</li>
-								<li className="mobile-menu-item block">
+								{/* <li className="mobile-menu-item block">
 									<NavLink
 										onClick={handleClick}
 										className="px-6 py-3 text-white block hover:text-primary-color"
@@ -271,7 +271,7 @@ function Header() {
 									>
 										Promotion
 									</NavLink>
-								</li>
+								</li> */}
 								<li className="mobile-menu-item block">
 									<NavLink
 										onClick={handleClick}
