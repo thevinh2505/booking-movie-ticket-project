@@ -50,7 +50,7 @@ function Header() {
 			return (
 				<div className=" items-center md:flex xs:hidden">
 					<NavLink
-						to="/signin"
+						to="/user"
 						className="flex items-center signInBtn hover:text-primary-color hover:opacity-100"
 					>
 						<div className="w-8 rounded-full  inline-block duration-700 mr-2 ">
@@ -200,7 +200,7 @@ function Header() {
 								{profile && JSON.stringify(profile) !== "{}" ? (
 									<li className="mobile-menu-item flex items-center justify-between px-6 py-3 overflow-hidden">
 										<NavLink
-											to="/account"
+											to="/user"
 											className="flex items-center signInBtn text-white "
 											onClick={handleClick}
 										>
@@ -212,7 +212,7 @@ function Header() {
 												/>
 											</div>
 											<NavLink
-												to="/account"
+												to="/user"
 												className="pr-2  cursor-pointer "
 											>
 												{profile.hoTen}

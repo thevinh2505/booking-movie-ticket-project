@@ -13,6 +13,7 @@ const CheckOut = lazy(() => import("features/booking/pages/CheckOut"));
 const PageNotFound=lazy(()=>import('common/components/Error') )
 const Download=lazy(()=> import('features/booking/pages/Download'))
 const About=lazy(()=>import('features/booking/pages/About'))
+const UserInfo=lazy(()=>import('features/user/pages/UserInfo'))
 // import Contact from "features/booking/pages/Contact";
 // import Detail from "features/booking/pages/Detail";
 // import SignIn from "features/authentication/pages/SignIn";
@@ -50,6 +51,7 @@ function App() {
 					<HomeTemplate path='/contact' exact Component={Contact} />
 					<HomeTemplate path='/download' exact Component={Download} />
 					<HomeTemplate path='/about' exact Component={About} />
+					<HomeTemplate path='/user' exact Component={UserInfo} />
 					<Route path="/signin" exact component={SignIn} />
 					<Route path="/signup" exact component={SignUp} />
 					<Route path="*" component={PageNotFound} />

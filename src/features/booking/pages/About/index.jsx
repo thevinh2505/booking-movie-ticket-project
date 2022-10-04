@@ -5,7 +5,11 @@ import "features/booking/pages/Download/download.css";
 import "features/booking/pages/Contact/style.css";
 import "./about.css";
 import { Col, Row } from "antd";
+import CountUp from "react-countup";
+import { useState } from "react";
+import ScrollTrigger from "react-scroll-trigger";
 function About() {
+	const [counterOn, setCounterOn] = useState(false);
 	return (
 		<Fragment>
 			{/* SPEAKER BANNER   */}
@@ -84,8 +88,12 @@ function About() {
 			{/* PHILOSOPHY SECTION  */}
 			<section className="philosophy-section bg_img bg_quarter_img  bg_quarter_img bg_one">
 				<div className="Container">
-					<Row className="w-full" >
-						<Col lg={18} className="offset-lg-3  bg_two" style={{padding:'0 15px'}}>
+					<Row className="w-full">
+						<Col
+							lg={18}
+							className="offset-lg-3  bg_two"
+							style={{ padding: "0 15px" }}
+						>
 							<div className="philosophy-content">
 								<div className="section-header-3">
 									<span className="cate text-left">
@@ -144,92 +152,141 @@ function About() {
 				</div>
 			</section>
 			{/* ABOUT-COUNTER-SECTION  */}
-			<section className="about-counter-section">
-				<div className="Container">
-					<div style={{margin:'0 -15px'}}>
-					<Row gutter={[15, 15]}>
-						<Col lg={8} xs={24}>
-							<div className="section-header-3 mb-lg-0">
-								<span className="cate text-left">
-									quick facts
-								</span>
-								<h2 className="title text-left">fun facts</h2>
-								<p className="text-left">
-									Objectively seize scalable metrics whereas
-									proactive services seamlessly empower fully
-									researched growth strategies
-								</p>
-							</div>
-						</Col>
-						<Col lg={16} xs={24}>
-							<div className="about-counter">
-								<div className="counter-item">
-									<div className="counter-thumb flex justify-center items-center">
-										<img
-											className=" w-16"
-											src="https://media.discordapp.net/attachments/527086735738273804/1025985103907799071/about-counter01.png"
-											alt="about"
-										/>
+			<ScrollTrigger
+				onEnter={() => setCounterOn(true)}
+				onExit={() => setCounterOn(false)}
+			>
+				<section className="about-counter-section">
+					<div className="Container">
+						<div style={{ margin: "0 -15px" }}>
+							<Row gutter={[15, 15]}>
+								<Col lg={8} xs={24}>
+									<div className="section-header-3 mb-lg-0">
+										<span className="cate text-left">
+											quick facts
+										</span>
+										<h2 className="title text-left">
+											fun facts
+										</h2>
+										<p className="text-left">
+											Objectively seize scalable metrics
+											whereas proactive services
+											seamlessly empower fully researched
+											growth strategies
+										</p>
 									</div>
-									<div className="counter-content">
-										<h3 className="title">30</h3>
-										<h3 className="title">M+</h3>
+								</Col>
+								<Col lg={16} xs={24}>
+									<div className="about-counter">
+										<div className="counter-item">
+											<div className="counter-thumb flex justify-center items-center">
+												<img
+													className=" w-16"
+													src="https://media.discordapp.net/attachments/527086735738273804/1025985103907799071/about-counter01.png"
+													alt="about"
+												/>
+											</div>
+											<div className="counter-content">
+												<h3 className="title">
+													{/* <Odometer value={30} format="d" animation="count" duration={1000} /> */}
+													{/* <Odometer value={30} format="" /> */}
+													{counterOn && (
+														<CountUp
+															start={0}
+															end={30}
+															duration={1.5}
+															delay={0}
+														/>
+													)}
+												</h3>
+												<h3 className="title">M+</h3>
+											</div>
+											<span className="block info">
+												Customers
+											</span>
+										</div>
+										<div className="counter-item">
+											<div className="counter-thumb flex justify-center items-center">
+												<img
+													className=" w-16"
+													src="https://media.discordapp.net/attachments/527086735738273804/1025985171008266250/about-counter02.png"
+													alt="about"
+												/>
+											</div>
+											<div className="counter-content">
+												<h3 className="title">
+													{counterOn && (
+														<CountUp
+															start={0}
+															end={11}
+															duration={1.5}
+															delay={0}
+														/>
+													)}
+												</h3>
+											</div>
+											<span className="block info">
+												Countries
+											</span>
+										</div>
+										<div className="counter-item">
+											<div className="counter-thumb flex justify-center items-center">
+												<img
+													className=" w-16"
+													src="https://media.discordapp.net/attachments/527086735738273804/1025985277610700830/about-counter03.png"
+													alt="about"
+												/>
+											</div>
+											<div className="counter-content">
+												<h3 className="title">
+													{counterOn && (
+														<CountUp
+															start={0}
+															end={650}
+															duration={1.5}
+															delay={0}
+														/>
+													)}
+												</h3>
+												<h3 className="title">+</h3>
+											</div>
+											<span className="block info">
+												Towns & Cities
+											</span>
+										</div>
+										<div className="counter-item">
+											<div className="counter-thumb flex justify-center items-center">
+												<img
+													className=" w-16"
+													src="https://media.discordapp.net/attachments/527086735738273804/1025985309789405225/about-counter04.png"
+													alt="about"
+												/>
+											</div>
+											<div className="counter-content">
+												<h3 className="title">
+													{counterOn && (
+														<CountUp
+															start={0}
+															end={5000}
+															duration={1.5}
+															delay={0}
+														/>
+													)}
+												</h3>
+												<h3 className="title">+</h3>
+											</div>
+											<span className="block info">
+												Screens
+											</span>
+										</div>
 									</div>
-									<span className="block info">
-										Customers
-									</span>
-								</div>
-								<div className="counter-item">
-									<div className="counter-thumb flex justify-center items-center">
-										<img
-											className=" w-16"
-											src="https://media.discordapp.net/attachments/527086735738273804/1025985171008266250/about-counter02.png"
-											alt="about"
-										/>
-									</div>
-									<div className="counter-content">
-										<h3 className="title">11</h3>
-									</div>
-									<span className="block info">
-										Countries
-									</span>
-								</div>
-								<div className="counter-item">
-									<div className="counter-thumb flex justify-center items-center">
-										<img
-											className=" w-16"
-											src="https://media.discordapp.net/attachments/527086735738273804/1025985277610700830/about-counter03.png"
-											alt="about"
-										/>
-									</div>
-									<div className="counter-content">
-										<h3 className="title">650</h3>
-										<h3 className="title">+</h3>
-									</div>
-									<span className="block info">
-										Towns & Cities
-									</span>
-								</div>
-								<div className="counter-item">
-									<div className="counter-thumb flex justify-center items-center">
-										<img
-											className=" w-16"
-											src="https://media.discordapp.net/attachments/527086735738273804/1025985309789405225/about-counter04.png"
-											alt="about"
-										/>
-									</div>
-									<div className="counter-content">
-										<h3 className="title">5000</h3>
-										<h3 className="title">+</h3>
-									</div>
-									<span className="block info">Screens</span>
-								</div>
-							</div>
-						</Col>
-					</Row>
+								</Col>
+							</Row>
+						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			</ScrollTrigger>
+
 			{/* GALLERY SECTION  */}
 			<section className="gallery-section">
 				<div className="Container">

@@ -5,7 +5,11 @@ import { NavLink } from "react-router-dom";
 import "features/booking/pages/Download/download.css";
 import "./style.css";
 import { Col, Row } from "antd";
+import CountUp from "react-countup";
+import { useState } from "react";
+import ScrollTrigger from "react-scroll-trigger";
 function Contact() {
+	const [counterOn, setCounterOn] = useState(false);
 	return (
 		<Fragment>
 			{/* SPEAKER BANNER   */}
@@ -178,108 +182,149 @@ function Contact() {
 				</div>
 			</section>
 			{/* CONTACT COUNTER SECTION  */}
-			<section className="contact-counter">
-				<div className="Container">
-					<Row className="justify-center md:gap-0 lg:gap-0">
-						<Col
-							className="md:px-2 lg:px-3 md:pb-4 lg:pb-0  sm:pb-6 xs:px-0 xs:pb-6 "
-							lg={6}
-							md={12}
-							sm={12}
-							xs={24}
-						>
-							<div className="contact-counter-item">
-								<div className="contact-counter-thumb flex justify-center items-center">
-									<div className="">
-										<FaFacebookF
-											style={{ lineHeight: "50px" }}
-										/>
+			<ScrollTrigger
+				onEnter={() => setCounterOn(true)}
+				onExit={() => setCounterOn(false)}
+			>
+				<section className="contact-counter">
+					<div className="Container">
+						<Row className="justify-center md:gap-0 lg:gap-0">
+							<Col
+								className="md:px-2 lg:px-3 md:pb-4 lg:pb-0  sm:pb-6 xs:px-0 xs:pb-6 "
+								lg={6}
+								md={12}
+								sm={12}
+								xs={24}
+							>
+								<div className="contact-counter-item">
+									<div className="contact-counter-thumb flex justify-center items-center">
+										<div className="">
+											<FaFacebookF
+												style={{ lineHeight: "50px" }}
+											/>
+										</div>
+									</div>
+									<div className="contact-counter-content">
+										<div className="counter-item">
+											<h5 className="title">
+												{counterOn && (
+													<CountUp
+														start={0}
+														end={130}
+														duration={1.5}
+														delay={0}
+													/>
+												)}
+											</h5>
+											<h5 className="title">K</h5>
+										</div>
+										<p>Followers</p>
 									</div>
 								</div>
-								<div className="contact-counter-content">
-									<div className="counter-item">
-										<h5 className="title">130</h5>
-										<h5 className="title">K</h5>
+							</Col>
+							<Col
+								className="md:px-2 lg:px-3 md:pb-4 lg:pb-0  sm:pb-6 xs:px-0 xs:pb-6"
+								lg={6}
+								md={12}
+								sm={12}
+								xs={24}
+							>
+								<div className="contact-counter-item active">
+									<div className="contact-counter-thumb flex justify-center items-center">
+										<div className="">
+											<FaUsers
+												style={{ lineHeight: "50px" }}
+											/>
+										</div>
 									</div>
-									<p>Followers</p>
-								</div>
-							</div>
-						</Col>
-						<Col
-							className="md:px-2 lg:px-3 md:pb-4 lg:pb-0  sm:pb-6 xs:px-0 xs:pb-6"
-							lg={6}
-							md={12}
-							sm={12}
-							xs={24}
-						>
-							<div className="contact-counter-item active">
-								<div className="contact-counter-thumb flex justify-center items-center">
-									<div className="">
-										<FaUsers
-											style={{ lineHeight: "50px" }}
-										/>
-									</div>
-								</div>
-								<div className="contact-counter-content">
-									<div className="counter-item">
-										<h5 className="title">35</h5>
-										<h5 className="title">K</h5>
-									</div>
-									<p>Members</p>
-								</div>
-							</div>
-						</Col>
-						<Col
-							className="md:px-2 lg:px-3 md:pb-4 lg:pb-0  sm:pb-6 xs:px-0 xs:pb-6"
-							lg={6}
-							md={12}
-							sm={12}
-							xs={24}
-						>
-							<div className="contact-counter-item">
-								<div className="contact-counter-thumb flex justify-center items-center">
-									<div className="">
-										<FaTwitter
-											style={{ lineHeight: "50px" }}
-										/>
+									<div className="contact-counter-content">
+										<div className="counter-item">
+											<h5 className="title">
+												{counterOn && (
+													<CountUp
+														start={0}
+														end={35}
+														duration={1.5}
+														delay={0}
+													/>
+												)}
+											</h5>
+											<h5 className="title">K</h5>
+										</div>
+										<p>Members</p>
 									</div>
 								</div>
-								<div className="contact-counter-content">
-									<div className="counter-item">
-										<h5 className="title">47</h5>
-										<h5 className="title">K</h5>
+							</Col>
+							<Col
+								className="md:px-2 lg:px-3 md:pb-4 lg:pb-0  sm:pb-6 xs:px-0 xs:pb-6"
+								lg={6}
+								md={12}
+								sm={12}
+								xs={24}
+							>
+								<div className="contact-counter-item">
+									<div className="contact-counter-thumb flex justify-center items-center">
+										<div className="">
+											<FaTwitter
+												style={{ lineHeight: "50px" }}
+											/>
+										</div>
 									</div>
-									<p>Followers</p>
-								</div>
-							</div>
-						</Col>
-						<Col
-							className="md:px-2 lg:px-3 md:pb-4 lg:pb-0  sm:pb-6 xs:px-0 xs:pb-6"
-							lg={6}
-							md={12}
-							sm={12}
-							xs={24}
-						>
-							<div className="contact-counter-item">
-								<div className="contact-counter-thumb flex justify-center items-center">
-									<div className="">
-										<FaEnvelope
-											style={{ lineHeight: "50px" }}
-										/>
+									<div className="contact-counter-content">
+										<div className="counter-item">
+											<h5 className="title">
+												{counterOn && (
+													<CountUp
+														start={0}
+														end={47}
+														duration={1.5}
+														delay={0}
+													/>
+												)}
+											</h5>
+											<h5 className="title">K</h5>
+										</div>
+										<p>Followers</p>
 									</div>
 								</div>
-								<div className="contact-counter-content">
-									<div className="counter-item">
-										<h5 className="title">290</h5>
-										<h5 className="title">K</h5>
+							</Col>
+							<Col
+								className="md:px-2 lg:px-3 md:pb-4 lg:pb-0  sm:pb-6 xs:px-0 xs:pb-6"
+								lg={6}
+								md={12}
+								sm={12}
+								xs={24}
+							>
+								<div className="contact-counter-item">
+									<div className="contact-counter-thumb flex justify-center items-center">
+										<div className="">
+											<FaEnvelope
+												style={{ lineHeight: "50px" }}
+											/>
+										</div>
 									</div>
-									<p>Subscribers</p>
+									<div className="contact-counter-content">
+										<div className="counter-item">
+											<h5 className="title">
+												{counterOn && (
+													<CountUp
+														start={0}
+														end={290}
+														duration={1.5}
+														delay={0}
+													/>
+												)}
+											</h5>
+											<h5 className="title">K</h5>
+										</div>
+										<p>Subscribers</p>
+									</div>
 								</div>
-							</div>
-						</Col>
-					</Row>
-				</div>
-			</section>
+							</Col>
+						</Row>
+					</div>
+				</section>
+			</ScrollTrigger>
 		</Fragment>
 	);
 }
