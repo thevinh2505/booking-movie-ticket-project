@@ -1,4 +1,6 @@
 import { Pagination } from "antd";
+
+// import SearchFilm from "features/booking/components/SearchFilm";
 // import AppDownload from "features/booking/components/AppDownload";
 
 import {
@@ -39,6 +41,7 @@ function Home() {
 	return (
 		<div>
 			<HomeCarousel />
+			{/* <SearchFilm/> */}
 			<div className=" mx-auto md:pt-16 md:pb-28  xs:pt-12 xs:pb-20">
 				<MovieList className="" />
 				<Pagination

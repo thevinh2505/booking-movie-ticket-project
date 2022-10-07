@@ -1,5 +1,6 @@
 import produce from "immer";
 import {
+	SET_ARRAY_FILM,
 	SET_BOX_OFFICE_LIST,
 	SET_CINEMA_SYSTEM,
 	SET_CINEMA_SYSTEM_INFO,
@@ -25,6 +26,7 @@ const initialState = {
 	// 	},
 	// ],
 	moneyCost: 0,
+	arrFilm:[],
 };
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -62,6 +64,10 @@ const reducer = (state = initialState, action) => {
 		case SET_COST:
 			return produce(state, (draft) => {
 				draft.moneyCost = action.payload;
+			});
+		case SET_ARRAY_FILM:
+			return produce(state, (draft) => {
+				draft.arrFilm = action.payload;
 			});
 		default:
 			return { ...state };

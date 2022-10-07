@@ -1,3 +1,8 @@
+.details-banner{
+    padding-top: 235px;
+    padding-bottom: 20px;
+    position: relative;
+}
 .details-banner:before {
     position: absolute;
     content: "";
@@ -18,9 +23,7 @@
 }
 
 @media (max-width:576px){
-    .detail-banner{
-        height: 400px;
-    }
+
     .cinema-logo-detail{
         max-width: 40px;
         margin:0 10px;
@@ -30,9 +33,7 @@
     }
 }
 @media(min-width:576.1px){
-    .detail-banner{
-        height: 424px;
-    }
+
     .cinema-logo-detail{
         max-width: 50px;
         margin:0 15px;

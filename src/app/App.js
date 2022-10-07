@@ -10,10 +10,11 @@ const Detail = lazy(() => import("features/booking/pages/Detail"));
 const SignIn = lazy(() => import("features/authentication/pages/SignIn"));
 const SignUp = lazy(() => import("features/authentication/pages/SignUp"));
 const CheckOut = lazy(() => import("features/booking/pages/CheckOut"));
-const PageNotFound=lazy(()=>import('common/components/Error') )
-const Download=lazy(()=> import('features/booking/pages/Download'))
-const About=lazy(()=>import('features/booking/pages/About'))
-const UserInfo=lazy(()=>import('features/user/pages/UserInfo'))
+const PageNotFound = lazy(() => import("common/components/Error"));
+const Download = lazy(() => import("features/booking/pages/Download"));
+const About = lazy(() => import("features/booking/pages/About"));
+const UserInfo = lazy(() => import("features/user/pages/UserInfo"));
+const News = lazy(() => import("features/booking/pages/News"));
 // import Contact from "features/booking/pages/Contact";
 // import Detail from "features/booking/pages/Detail";
 // import SignIn from "features/authentication/pages/SignIn";
@@ -48,10 +49,11 @@ function App() {
 						Component={CheckOut}
 					/>
 				</Suspense> */}
-					<HomeTemplate path='/contact' exact Component={Contact} />
-					<HomeTemplate path='/download' exact Component={Download} />
-					<HomeTemplate path='/about' exact Component={About} />
-					<HomeTemplate path='/user' exact Component={UserInfo} />
+					<HomeTemplate path="/contact" exact Component={Contact} />
+					<HomeTemplate path="/download" exact Component={Download} />
+					<HomeTemplate path="/about" exact Component={About} />
+					<HomeTemplate path="/user" exact Component={UserInfo} />
+					<HomeTemplate path="/news" exact Component={News} />
 					<Route path="/signin" exact component={SignIn} />
 					<Route path="/signup" exact component={SignUp} />
 					<Route path="*" component={PageNotFound} />

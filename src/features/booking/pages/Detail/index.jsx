@@ -88,7 +88,7 @@ function DetailBanner(props) {
 					style={{
 						backgroundImage:
 							"url('http://pixner.net/boleto/demo/assets/images/banner/banner03.jpg')",
-						maxHeight: "323px",
+
 					}}
 				>
 					<div className="Container xs:pt-10 sm:pt-16 lg:pt-36">

@@ -1,5 +1,5 @@
 import { instance } from "api/instance";
-import { DISPLAY_LOADING, HIDE_LOADING } from "common/utils/LoadingAction";
+
 
 export const SET_MOVIE_LIST = "booking/SET_MOVIE_LIST";
 export const SET_CINEMA_SYSTEM = "booking/SET_CINEMA_SYSTEM";
@@ -8,6 +8,27 @@ export const SET_MOVIE_DETAIL = "booking/SET_MOVIE_DETAIL";
 export const SET_BOX_OFFICE_LIST = "booking/SET_BOX_OFFICE_LIST";
 export const SET_SELECTED_SEATS = "booking/SET_SELECTED_SEATS";
 export const SET_COST = "booking/SET_COST";
+export const SET_ARRAY_FILM = "booking/SET_ARRAY_FILM";
+// lấy ds phim
+export const fetchArrayFilm = () => {
+	return async (next) => {
+		try {
+			const res = await instance.request({
+				url: "api/QuanLyPhim/LayDanhSachPhim",
+				method: "GET",
+				params: {
+					maNhom: "GP03",
+				},
+			});
+			next({
+				type: SET_ARRAY_FILM,
+				payload: res.data.content,
+			});
+		} catch (err) {
+			console.log(err);
+		}
+	};
+};
 // lấy danh sách phim phân trang
 export const fetchMovieListAction = (config, getTotalCount) => {
 	return async (next) => {
@@ -71,6 +92,7 @@ export const fetchCinemaScheduleAction = (maHeThongRap) => {
 					maHeThongRap,
 				},
 			});
+			console.log('tt lich chieu ht rap');
 			next({
 				type: SET_CINEMA_SYSTEM,
 				payload: res.data.content[0],
@@ -154,3 +176,5 @@ export const fetchBookingTicketAction = (thongTinDatVe) => {
 		}
 	};
 };
+
+// LẤY THÔNG TIN CỤM RẠP THEO HỆ THỐNG

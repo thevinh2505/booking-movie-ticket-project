@@ -22,10 +22,10 @@ function Header() {
 	const history = useHistory();
 
 	const profile = useSelector((state) => state.auth.profile);
-	console.log("profile", profile);
+
 	const renderUserInfo = () => {
 		if (!localStorage.getItem("user")) {
-			console.log("1");
+
 			return (
 				<div className="flex items-center">
 					<NavLink
@@ -46,7 +46,7 @@ function Header() {
 				</div>
 			);
 		} else {
-			console.log(2);
+
 			return (
 				<div className=" items-center md:flex xs:hidden">
 					<NavLink
@@ -154,9 +154,9 @@ function Header() {
 						</NavLink>
 						{/* <NavLink
 							className="text-white px-3 hover:text-primary-color"
-							to="/home"
+							to="/news"
 						>
-							Promotion
+							News
 						</NavLink> */}
 						<NavLink
 							className="text-white px-3 hover:text-primary-color"
