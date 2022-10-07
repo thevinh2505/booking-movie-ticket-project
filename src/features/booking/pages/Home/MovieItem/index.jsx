@@ -18,6 +18,7 @@ const customStyles = {
 		transform: "translate(-50%, -50%)",
 		padding: 0,
 		border: "none",
+		maxWidth:'100vw'
 	},
 };
 function MovieItem(props) {
@@ -97,6 +98,8 @@ function MovieItem(props) {
 				contentLabel="Example Modal"
 			>
 				<ReactPlayer
+					style={{maxWidth:'100vw'}}
+					className='react-player'
 					playing={true}
 					width={640}
 					height={360}

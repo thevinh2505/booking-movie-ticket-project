@@ -15,6 +15,6 @@ instance.interceptors.request.use((config) => {
 		Authorization: "Bearer " + localStorage.getItem("token"),
 	};
 	console.log(localStorage.getItem('token'),typeof(localStorage.getItem('token')))
-	// console.log("interceptor", config);
+
 	return config;
 });
