@@ -30,7 +30,7 @@ function SignIn() {
 		onSubmit: (values) => {
 			handleSignIn(values);
 			
-			history.goBack();
+			history.push('/');
 		},
 		validationSchema: schema,
 		validateOnChange: false,

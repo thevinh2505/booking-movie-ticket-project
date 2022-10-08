@@ -15,6 +15,7 @@ const Download = lazy(() => import("features/booking/pages/Download"));
 const About = lazy(() => import("features/booking/pages/About"));
 const UserInfo = lazy(() => import("features/user/pages/UserInfo"));
 const News = lazy(() => import("features/booking/pages/News"));
+const BookingHistory=lazy(()=>import('features/booking/pages/BookingHistory'))
 // import Contact from "features/booking/pages/Contact";
 // import Detail from "features/booking/pages/Detail";
 // import SignIn from "features/authentication/pages/SignIn";
@@ -54,6 +55,7 @@ function App() {
 					<HomeTemplate path="/about" exact Component={About} />
 					<HomeTemplate path="/user" exact Component={UserInfo} />
 					<HomeTemplate path="/news" exact Component={News} />
+					<HomeTemplate path='/bookinghistory' exact Component={BookingHistory} />
 					<Route path="/signin" exact component={SignIn} />
 					<Route path="/signup" exact component={SignUp} />
 					<Route path="*" component={PageNotFound} />

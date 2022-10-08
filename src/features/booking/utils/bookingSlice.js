@@ -5,6 +5,7 @@ import {
 	SET_CINEMA_SYSTEM,
 	SET_CINEMA_SYSTEM_INFO,
 	SET_COST,
+	SET_FILM_INFO,
 	SET_MOVIE_DETAIL,
 	SET_MOVIE_LIST,
 	SET_SELECTED_SEATS,
@@ -26,7 +27,8 @@ const initialState = {
 	// 	},
 	// ],
 	moneyCost: 0,
-	arrFilm:[],
+	arrFilm: [],
+	filmInfo: {},
 };
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -68,6 +70,10 @@ const reducer = (state = initialState, action) => {
 		case SET_ARRAY_FILM:
 			return produce(state, (draft) => {
 				draft.arrFilm = action.payload;
+			});
+		case SET_FILM_INFO:
+			return produce(state, (draft) => {
+				draft.filmInfo = action.payload;
 			});
 		default:
 			return { ...state };

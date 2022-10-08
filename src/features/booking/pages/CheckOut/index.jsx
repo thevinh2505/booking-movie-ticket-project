@@ -9,7 +9,7 @@ import {
 import React, { Fragment, useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouteMatch } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import styles from "./style.module.css";
 import "./style.css";
 import _ from "lodash";
@@ -110,6 +110,7 @@ export default function BookingTab(props) {
 						boxOfficeList={boxOfficeList}
 						thongTinPhim={thongTinPhim}
 						danhSachGhe={danhSachGhe}
+						MaPhim={MaPhim}
 					/>
 				</TabPane>
 			</Tabs>
@@ -117,9 +118,6 @@ export default function BookingTab(props) {
 	);
 }
 function CheckOut(props) {
-	// const otherSelectedSeats = useSelector(
-	// 	(state) => state.booking.otherSelectedSeats
-	// );
 	const arrowDownRef = useRef();
 	const bookingInfoWrapperRef = useRef();
 	const handleBookingTicket = () => {
@@ -128,7 +126,6 @@ function CheckOut(props) {
 			danhSachVe: props.selectedSeats,
 		};
 		console.log(thongTinDatVe);
-		// props.dispatch(fetchBookingTicketAction(thongTinDatVe));
 		props.setActiveTabKey("2");
 	};
 	const handleArrowDown = () => {
@@ -140,7 +137,6 @@ function CheckOut(props) {
 			let classSeatVip = seat.loaiGhe === "Vip" ? "seat-vip" : "";
 			let classBookedSeat = seat.daDat ? "seat-booked" : "";
 			let classSelectedSeat = "";
-			// let classOtherSelectedSeats = "";
 			let indexSelectedSeat = props.selectedSeats.findIndex(
 				(gheDD) => gheDD.maGhe === seat.maGhe
 			);
@@ -177,6 +173,7 @@ function CheckOut(props) {
 			);
 		});
 	};
+	console.log('props selected seat',props.selectedSeats);
 	return (
 		<Fragment>
 			<Row className="">
@@ -1706,17 +1703,18 @@ function Combo(props) {
 }
 
 function BookingResult(props) {
+	const history=useHistory()
 	const items = useSelector((state) => state.booking.moneyCost);
 	const tienVe = props.selectedSeats?.reduce((accumulator, item) => {
 		return (accumulator += item.giaVe);
 	}, 0);
 	const handlePayment = () => {
 		const thongTinDatVe = {
-			maLichChieu: +props.MaPhim,
+			maLichChieu: props.MaPhim,
 			danhSachVe: props.selectedSeats,
 		};
 		console.log(thongTinDatVe);
-		props.dispatch(fetchBookingTicketAction(thongTinDatVe));
+		props.dispatch(fetchBookingTicketAction(thongTinDatVe,history));
 	};
 	return (
 		<Fragment>
@@ -1853,12 +1851,12 @@ function BookingResult(props) {
 						</p>
 					</div>
 				</div>
-				<div className="py-3 px-4 flex items-center bg-background-light rounded-lg mt-4">
+				{/* <div className="py-3 px-4 flex items-center bg-background-light rounded-lg mt-4">
 					<p className="text-primary-color">
 						If you don't receive your ticket code after 10 minutes
 						of payment, please contact CSKH for assistance.
 					</p>
-				</div>
+				</div> */}
 			</div>
 
 			<div

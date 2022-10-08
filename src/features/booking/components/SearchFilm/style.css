@@ -84,6 +84,10 @@
 }
 .select-box .ant-select-arrow{
     color:white;
+    display: none;
+}
+select{
+    -webkit-appearance: none
 }
 .select-box .ant-select-selection-placeholder {
     color: white!important;
@@ -180,6 +184,10 @@
 .select-film-dropdown{
     overflow-y: scroll!important;
 }
+/* .select-box{
+    width: 200px;
+    display: inline-block;
+} */
 @media (max-width: 767px) {
 	.search-tab {
 		text-align: center;
@@ -217,7 +225,7 @@
 }
 @media (min-width: 992px) {
 	.search-ticket-section {
-		margin-top: -150px;
+		margin-top: -200px;
 		position: relative;
 		z-index: 9;
 		padding-top: 0;

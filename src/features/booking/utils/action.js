@@ -1,4 +1,5 @@
 import { instance } from "api/instance";
+import swal from "sweetalert";
 
 
 export const SET_MOVIE_LIST = "booking/SET_MOVIE_LIST";
@@ -9,6 +10,7 @@ export const SET_BOX_OFFICE_LIST = "booking/SET_BOX_OFFICE_LIST";
 export const SET_SELECTED_SEATS = "booking/SET_SELECTED_SEATS";
 export const SET_COST = "booking/SET_COST";
 export const SET_ARRAY_FILM = "booking/SET_ARRAY_FILM";
+export const SET_FILM_INFO='booking/SET_FILM_INFO'
 // lấy ds phim
 export const fetchArrayFilm = () => {
 	return async (next) => {
@@ -92,7 +94,7 @@ export const fetchCinemaScheduleAction = (maHeThongRap) => {
 					maHeThongRap,
 				},
 			});
-			console.log('tt lich chieu ht rap');
+			console.log('tt lich chieu ht rap',res.data.content[0]);
 			next({
 				type: SET_CINEMA_SYSTEM,
 				payload: res.data.content[0],
@@ -153,28 +155,68 @@ export const fetchBoxOfficeListAction = (id) => {
 };
 
 // API ĐẶT VÉ LÊN SERVER
-export const fetchBookingTicketAction = (thongTinDatVe) => {
+export const fetchBookingTicketAction = (thongTinDatVe,history) => {
 	return async (next) => {
 		try {
-			// next({
-			// 	type:DISPLAY_LOADING,
-			// })
-			const res = await instance.request({
-				url: "api/QuanLyDatVe/DatVe",
-				method: "POST",
-				data: thongTinDatVe,
-			});
-			console.log(res.data.content);
-			// next({
-			// 	type:HIDE_LOADING,
-			// })
+			if(thongTinDatVe.danhSachVe.length===0){
+				swal({
+					title: "You haven't chosen a seat yet! " ,
+					text: "Please select a seat",
+					icon: "error",
+					button: "OK",
+					timer:2000,
+				});
+			}
+			else{
+				const res = await instance.request({
+					url: "api/QuanLyDatVe/DatVe",
+					method: "POST",
+					data: thongTinDatVe,
+				});
+				console.log(res.data.content)
+				
+				swal({
+					title: "Booking successfully! " ,
+					text: "You successfully booked seats",
+					icon: "success",
+					button: "OK",
+					timer:2000,
+				});
+				history.push('/bookinghistory')
+			}
 		} catch (err) {
 			console.log(err);
-			// next({
-			// 	type:HIDE_LOADING,
-			// })
+			swal({
+				title: "Booking failed! " ,
+				text: "Please try booking again",
+				icon: "error",
+				button: "OK",
+                timer:2000,
+			});
+
 		}
 	};
 };
 
-// LẤY THÔNG TIN CỤM RẠP THEO HỆ THỐNG
+// lấy thông tin lịch chiếu phim
+export const getCinemaScheduleClusterAction=(maPhim)=>{
+	return async(next)=>{
+		try{
+			const res=await instance.request({
+				url:"api/QuanLyRap/LayThongTinLichChieuPhim",
+				method:"GET",
+				params:{
+					MaPhim:maPhim,
+				},
+				
+			})
+			console.log(res.data.content,'clus ter')
+			next({
+				type:SET_FILM_INFO,
+				payload:res.data.content
+			})
+		}catch(err){
+			console.log(err)
+		}
+	}
+}

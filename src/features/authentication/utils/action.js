@@ -1,6 +1,4 @@
 import { instance } from "api/instance";
-
-
 export const SET_PROFILE="auth/SET_PROFILE";
 export const SET_ACCOUNT_INFO="auth/SET_ACCOUNT_INFO"
 // action đăng nhập
@@ -12,6 +10,7 @@ export const signInAction = (user) => {
 				method: "POST",
 				data: user,
 			});
+			console.log(res.data.content.accessToken,'access');
             // lưu token xuống localStorage
             localStorage.setItem("token",res.data.content.accessToken)
 
