@@ -1,0 +1,12 @@
+.scrollToTop {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0;
+    color: #ffffff;
+
+
+    border-radius: 5px;
+    background: #31d7a9;
+    text-align: center;
+}

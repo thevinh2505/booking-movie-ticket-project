@@ -1,4 +1,5 @@
 import { instance } from "api/instance";
+import axios from "axios";
 import swal from "sweetalert";
 
 
@@ -11,6 +12,7 @@ export const SET_SELECTED_SEATS = "booking/SET_SELECTED_SEATS";
 export const SET_COST = "booking/SET_COST";
 export const SET_ARRAY_FILM = "booking/SET_ARRAY_FILM";
 export const SET_FILM_INFO='booking/SET_FILM_INFO'
+export const SET_BLOGS='booking/SET_BLOGS'
 // lấy ds phim
 export const fetchArrayFilm = () => {
 	return async (next) => {
@@ -218,5 +220,23 @@ export const getCinemaScheduleClusterAction=(maPhim)=>{
 		}catch(err){
 			console.log(err)
 		}
+	}
+}
+
+// call API BLOGS
+export const fetchBlogDataAction= async(next)=>{
+	try{
+		const res=await axios({
+			url:'https://62ca7d713e924a01285a137c.mockapi.io/api/blogs',
+			method:"GET",
+		})
+		console.log(res.data,'res');
+
+		next({
+			type:SET_BLOGS,
+			payload:res.data
+		})
+	}catch(err){
+		console.log(err);
 	}
 }

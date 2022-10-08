@@ -25,12 +25,11 @@ function Header() {
 
 	const renderUserInfo = () => {
 		if (!localStorage.getItem("user")) {
-
 			return (
 				<div className="flex items-center">
 					<NavLink
 						to="/signin"
-						className=" items-center signInBtn hover:text-primary-color md:flex xs:hidden  pr-2 signin-in-header opacity-60"
+						className=" items-center signInBtn hover:text-primary-color lg:flex xs:hidden  pr-2 signin-in-header opacity-60"
 					>
 						<span className="mr-2 text-2xl  text-white inline-block duration-700 hover:text-primary-color">
 							<FaUserCircle />
@@ -46,9 +45,8 @@ function Header() {
 				</div>
 			);
 		} else {
-
 			return (
-				<div className=" items-center md:flex xs:hidden">
+				<div className=" items-center lg:flex xs:hidden">
 					<NavLink
 						to="/user"
 						className="flex items-center signInBtn hover:text-primary-color hover:opacity-100"
@@ -133,7 +131,7 @@ function Header() {
 							/>
 						</NavLink>
 					</div>
-					<div className="header-navbar text-white hidden md:block ">
+					<div className="header-navbar text-white hidden lg:block ">
 						<NavLink
 							className="text-white px-3 hover:text-primary-color"
 							to="/home"
@@ -152,12 +150,12 @@ function Header() {
 						>
 							About Us
 						</NavLink>
-						{/* <NavLink
+						<NavLink
 							className="text-white px-3 hover:text-primary-color"
 							to="/news"
 						>
 							News
-						</NavLink> */}
+						</NavLink>
 						<NavLink
 							className="text-white px-3 hover:text-primary-color"
 							to="/download"
@@ -168,7 +166,7 @@ function Header() {
 					<div className="header-auth text-white flex">
 						{renderUserInfo()}
 						<button
-							className="block md:hidden ml-4 text-2xl hover:text-primary-color duration-700"
+							className="block lg:hidden ml-4 text-2xl hover:text-primary-color duration-700"
 							ref={barsRef}
 							onClick={handleBarsIcon}
 						>
@@ -263,15 +261,15 @@ function Header() {
 										About Us
 									</NavLink>
 								</li>
-								{/* <li className="mobile-menu-item block">
+								<li className="mobile-menu-item block">
 									<NavLink
 										onClick={handleClick}
 										className="px-6 py-3 text-white block hover:text-primary-color"
-										to="/promotion"
+										to="/news"
 									>
-										Promotion
+										News
 									</NavLink>
-								</li> */}
+								</li>
 								<li className="mobile-menu-item block">
 									<NavLink
 										onClick={handleClick}
@@ -318,6 +316,10 @@ function Header() {
 						</div>
 					</nav>
 				</div>
+
+
+
+
 				{/* MENU BACKDROP  */}
 				<div
 					className="menu-backdrop fixed inset-0 z-20"
