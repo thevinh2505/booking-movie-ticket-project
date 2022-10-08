@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import { string } from "yup";
 import { useDispatch } from "react-redux";
 import { instance } from "api/instance";
+import swal from "sweetalert";
 const schema = yup.object().shape({
 	taiKhoan: string("*Sai định dạng taikhoan").required("*Vui lòng nhập"),
 	matKhau: string("*Sai định dạng mật khẩu")
@@ -60,9 +61,23 @@ function SignUp() {
 				data: user,
 			});
 			setIsLoading(false);
+			swal({
+				title: "Sign up successfully! " ,
+				text: "You successfully signed up",
+				icon: "success",
+				button: "OK",
+				timer:2000,
+			});
 			history.push("/signin");
 		} catch (err) {
 			console.log(err);
+			swal({
+				title: "Sign up failed! " ,
+				text: "User information already exists",
+				icon: "error",
+				button: "OK",
+				timer:2000,
+			});
 		} finally {
 			setIsLoading(false);
 		}

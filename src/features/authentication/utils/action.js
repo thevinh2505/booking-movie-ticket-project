@@ -1,4 +1,5 @@
 import { instance } from "api/instance";
+import swal from "sweetalert";
 export const SET_PROFILE="auth/SET_PROFILE";
 export const SET_ACCOUNT_INFO="auth/SET_ACCOUNT_INFO"
 // action đăng nhập
@@ -11,6 +12,14 @@ export const signInAction = (user) => {
 				data: user,
 			});
 			console.log(res.data.content.accessToken,'access');
+			swal({
+				title: "Sign in successfully! " ,
+				text: "You successfully signed in",
+				icon: "success",
+				button: "OK",
+				timer:2000,
+			});
+
             // lưu token xuống localStorage
             localStorage.setItem("token",res.data.content.accessToken)
 
@@ -29,6 +38,13 @@ export const signInAction = (user) => {
 
 		} catch (err) {
 			console.log(err);
+			swal({
+				title: "Sign in failed! " ,
+				text: "Wrong password or username",
+				icon: "error",
+				button: "OK",
+				timer:2000,
+			});
 		}
 	};
 };
