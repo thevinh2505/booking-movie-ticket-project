@@ -108,7 +108,6 @@ function Header() {
 			payload: null,
 		});
 		handleClick();
-		history.goBack();
 	};
 	const handleClick = () => {
 		closeBtnRef.current.click();
