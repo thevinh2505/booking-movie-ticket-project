@@ -222,7 +222,6 @@ function DetailBanner(props) {
 			<Modal
 				ariaHideApp={false}
 				isOpen={modalIsOpen}
-				// onAfterOpen={afterOpenModal}
 				onRequestClose={closeModal}
 				style={customStyles}
 				contentLabel="Example Modal"
@@ -344,9 +343,7 @@ function DetailLocation(props) {
 												</p>
 											</div>
 										</div>
-										{/* <div >
-											<img  ref={chevronRef} className=" cursor-pointer" src="https://movie.zalopay.vn/images/icon-arrow-down.svg" alt="button open"/>
-										</div> */}
+										
 									</div>
 									<div ref={showTimeRef} className="pt-2">
 										<p className="text-sm text-text-grey font-medium">

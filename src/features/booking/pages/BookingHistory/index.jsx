@@ -12,6 +12,7 @@ function BookingHistory() {
 		dispatch(getUserInfo);
 	}, []);
 	const userInfo = useSelector((state) => state.user.userInfo);
+	console.log('user info',userInfo)
 	const data = userInfo?.thongTinDatVe;
 	const columns = [
 		{

@@ -1,11 +1,11 @@
 import { Button } from "antd";
 import React, { useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { string } from "yup";
-import { useDispatch } from "react-redux";
+
 import { instance } from "api/instance";
 import swal from "sweetalert";
 const schema = yup.object().shape({
@@ -62,21 +62,21 @@ function SignUp() {
 			});
 			setIsLoading(false);
 			swal({
-				title: "Sign up successfully! " ,
+				title: "Sign up successfully! ",
 				text: "You successfully signed up",
 				icon: "success",
 				button: "OK",
-				timer:2000,
+				timer: 2000,
 			});
 			history.push("/signin");
 		} catch (err) {
 			console.log(err);
 			swal({
-				title: "Sign up failed! " ,
+				title: "Sign up failed! ",
 				text: "User information already exists",
 				icon: "error",
 				button: "OK",
-				timer:2000,
+				timer: 2000,
 			});
 		} finally {
 			setIsLoading(false);

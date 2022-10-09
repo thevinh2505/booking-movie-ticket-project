@@ -33,9 +33,10 @@ function MovieItem(props) {
 	const closeModal = () => {
 		setIsOpen(false);
 	};
-	const trailer = item.trailer.startsWith("https://www.youtube")
-		? item.trailer
-		: "https://youtu.be/dQw4w9WgXcQ";
+	// const trailer = item.trailer.startsWith("https://www.youtube")
+	// 	? item.trailer
+	// 	: "https://youtu.be/dQw4w9WgXcQ";
+	const trailer=item.trailer
 	return (
 		<>
 			<div className=" mb-7">
